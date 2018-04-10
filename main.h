@@ -26,4 +26,4 @@ bool exit3 = true;
 int MonsterHP = 30;
 int MonsterATK = 10;
 int GoldGain;
-#endif // MAIN_H
+#endif  MAIN_H
