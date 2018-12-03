@@ -6,7 +6,7 @@
 /*   By: iruban <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 15:31:39 by iruban            #+#    #+#             */
-/*   Updated: 2018/11/02 16:24:08 by iruban           ###   ########.fr       */
+/*   Updated: 2018/11/22 11:29:57 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-int             get_next_line(const int fd, char **line);
+int				get_next_line(const int fd, char **line);
 int				ft_sqrt(int nb);
 int				ft_pow(int a, int b);
 void			ft_is_negative(int n);
@@ -95,4 +95,8 @@ void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void			ft_lstadd(t_list **alst, t_list *new);
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+int        ft_strchri_lu(char *s, int c, int i);
+int        ft_strchri(char *s, int c, int i);
+size_t        ft_wstrlen(unsigned *s);
+size_t    ft_wcharlen(unsigned wc);
 #endif
