@@ -5,7 +5,11 @@
 
 int main(void)
 {
-	ft_printf("%s %d %c\n 22 %% \tx / %X \a\n", "This is a string", 29, 'X', 124214);
-	printf("%s %d %c\n %% 22 \tx / %X \a\n", "This is a string", 29, 'X', 124214 );
+
+    char *qwe = "ewoihewro";
+
+
+	ft_printf("%s %d %c\n%u %o \n%p\n\n", "This is a string", 29, 'X', 124214, 213 , qwe);
+	printf("%s %d %c\n%u %o %p\n", "This is a string", 29, 'X', 124214 , 213, qwe);
 	return (0);
 }
