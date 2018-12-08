@@ -3,11 +3,39 @@
 #include <stdlib.h>
 #include "../includes/ft_printf.h"
 
-
-void putstramper(void *str)
+extern void write_char(char a)
 {
-    unsigned char *a = &str;
-    ft_putstr(a);
+    write(1, &a, 1);
+}
+
+
+char hex_digit(int v) {
+    if (v >= 0 && v < 10)
+        return '0' + v;
+    else
+        return 'a' + v - 10;
+}
+
+void print_address_hex(void* p0) {
+    int i;
+    int counter;
+    counter = 1;
+    uintptr_t p = (uintptr_t)p0;
+
+    write_char('0'); write_char('x');
+
+    i = (sizeof(p) << 3) - 4;
+    while (i >= 0)
+    {
+        if (counter == 1) {
+            while (hex_digit((p >> i) & 0xf) == '0')
+                i -= 4;
+            counter = 0;
+        }
+        write_char(hex_digit((p >> i) & 0xf));
+        i -= 4;
+    }
+
 }
 
 
@@ -50,7 +78,7 @@ void check_symbol(char format, va_list argptr)
   	else if (format == 'o')
   	    convertDecimalToOctal(va_arg(argptr, unsigned int));
   	else if (format == 'p')
-  	    putstramper(va_arg(argptr, void *));
+  	    print_address_hex(va_arg(argptr, void *));
 	else if( format == '%')
 		ft_putchar('%');
 	else if (format == 'x')
