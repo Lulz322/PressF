@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	ft_printf("%s %d %c\n %% \tx / %X \a\n", "This is a string", 29, 'X', 124214);
-	printf("%s %d %c\n %% \tx / %X \a\n", "This is a string", 29, 'X', 124214 );
+	ft_printf("%s %d %c\n 22 %% \tx / %X \a\n", "This is a string", 29, 'X', 124214);
+	printf("%s %d %c\n %% 22 \tx / %X \a\n", "This is a string", 29, 'X', 124214 );
 	return (0);
 }
