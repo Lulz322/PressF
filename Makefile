@@ -24,7 +24,7 @@ DIR_O = temporary
 
 HEADER = includes
 
-SOURCES = ft_printf.c \
+SOURCES = ft_printf.c hex.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

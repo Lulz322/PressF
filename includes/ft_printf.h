@@ -107,6 +107,8 @@ void					cs_not_found(t_printf *p);
 ** -------------------------- Numbers Functions --------------------------------
 */
 
+void prntnum_lower(unsigned int num, char sign , int base);
+void prntnum_upper(unsigned int num, char sign , int base);
 void					pf_putnb(t_printf *p);
 void					pf_putnb_base(int base, t_printf *p);
 void					itoa_printf(intmax_t d, t_printf *p, int len);

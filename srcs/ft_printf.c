@@ -3,37 +3,42 @@
 #include <stdlib.h>
 #include "../includes/ft_printf.h"
 
+
+
+
 void check_symbol(char format, va_list argptr)
 {
+	char *s;
+	int d;
+	char c;
+
 	//string
 	if( format == 's' ) {
-	  char* s = va_arg( argptr, char * );
+	  s = va_arg( argptr, char * );
 	  ft_putstr(s);
-	 // ft_putchar('\n');
 	}
 	// character
 	else if( format == 'c' ) {
-	  char c = (char) va_arg( argptr, int );
+	  c = (char) va_arg( argptr, int );
 	  ft_putchar(c);
-	 // ft_putchar('\n');
 	}
 	// integer
-	else if( format == 'd' ) {
-	  int d = va_arg( argptr, int );
+	else if( format == 'd' || format == 'i') {
+	  d = va_arg( argptr, int );
 	  ft_putnbr(d);
-	  //ft_putchar('\n');
   	}
 	else if( format == '%')
 		ft_putchar('%');
-	else if (format == 'n')
-		ft_putchar('\n');
-	else if (format == '\\')
-		ft_putstr("\\");
-	else if (format == '\t')
-		ft_putchar('\t');
-	else if (format == '\a')
-		ft_putchar('\a');
+	else if (format == 'x')
+	    prntnum_lower((va_arg(argptr, unsigned int)), ' ' , 16);
+	else if (format == 'X')
+        prntnum_upper((va_arg(argptr, unsigned int)), ' ' , 16);
+
+
+
 }
+
+
 
 int ft_printf(const char *format, ...)
 {
@@ -44,7 +49,7 @@ int ft_printf(const char *format, ...)
     va_start( argptr, format );
 	i = 0;
     while(format[i]) {
-	if (format[i] == '%' || format[i] == '\\')
+	if (format[i] == '%')
     	check_symbol(format[++i], argptr);
 	else
 		ft_putchar(format[i]);
