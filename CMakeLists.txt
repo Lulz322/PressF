@@ -77,4 +77,4 @@ add_executable(printf
         srcs/ft_printf.c
         temporary/
         Makefile
-        qwe.c srcs/hex.c)
+        qwe.c srcs/hex.c srcs/float.c)
