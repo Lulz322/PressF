@@ -54,7 +54,7 @@ void prntnum_upper(unsigned int num, char sign , int base)
     }
 
     outbuf[j] = 0;
-    printf("%s\n", outbuf);
+    ft_putstr(outbuf);
 
 }
 

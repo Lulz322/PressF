@@ -6,7 +6,7 @@
 #    By: bsouchet <bsouchet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/03 22:30:54 by bsouchet          #+#    #+#              #
-#    Updated: 2018/11/28 11:33:47 by iruban           ###   ########.fr        #
+#    Updated: 2018/12/10 14:49:53 by iruban           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,13 @@ LIBFT = libft
 
 DIR_S = srcs
 
-DIR_O = temporary
+DIR_O = tmp
 
 HEADER = includes
 
-SOURCES = ft_printf.c hex.c
+SOURCES = ft_printf.c \
+			hex.c \
+			float.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
@@ -39,7 +41,7 @@ $(NAME): $(OBJS)
 	@ranlib $(NAME)
 
 $(DIR_O)/%.o: $(DIR_S)/%.c
-	@mkdir -p temporary
+	@mkdir -p tmp
 	@$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 norme:

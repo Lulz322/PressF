@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
 #include "../includes/ft_printf.h"
 
 
@@ -8,7 +5,7 @@
 void parsing(const char *format, int i, va_list argptr)
 {
 
-
+    void check_flags(const char *format, int i, va_list argptr);
 	check_symbol(format[++i], argptr);
 
 }
@@ -16,17 +13,13 @@ void parsing(const char *format, int i, va_list argptr)
 
 
 
+
 void check_symbol(char format, va_list argptr)
 {
-	char *s;
-	int d;
-	char c;
-
 	if( format == 's' )
 	  ft_putstr(va_arg( argptr, char * ));
 	else if( format == 'c' )
 	  ft_putchar((unsigned char)va_arg( argptr, int ));
-	// integer
 	else if( format == 'd' || format == 'i')
 	    ft_putnbr(va_arg( argptr, int));
   	else if (format == 'u')
@@ -43,6 +36,11 @@ void check_symbol(char format, va_list argptr)
 	    prntnum_lower((va_arg(argptr, unsigned int)), ' ' , 16);
 	else if (format == 'X')
 	    prntnum_upper((va_arg(argptr, unsigned int)), ' ' , 16);
+	else if (format == 'b')
+	    byte_to_binary(va_arg(argptr, int));
+	else if (format == 'k');
+	else if (format == 'g')
+	    MyGFloat(va_arg(argptr, double));
 }
 
 
@@ -50,7 +48,9 @@ int ft_printf(const char *format, ...)
 {
 	int i;
 
+	//setlocale("LC_ALL", "");
 	va_list argptr;
+	symbols = 0;
 
     va_start( argptr, format );
 	i = 0;
@@ -63,7 +63,6 @@ int ft_printf(const char *format, ...)
 		ft_putchar(format[i]);
     i++;
     }
-
     va_end( argptr );
-	return (0);
+	return (symbols);
 }

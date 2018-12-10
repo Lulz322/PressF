@@ -24,6 +24,9 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <unistd.h>
+#include <locale.h>
+
+unsigned int symbols;
 
 /*
 ** -------------------------- Macros Definition --------------------------------
@@ -63,6 +66,7 @@ int						ft_dprintf(int fd, const char *format, ...);
 
 void check_symbol(char format, va_list argptr);
 void parsing(const char *format, int i, va_list argptr);
+void check_flags(const char *format, int i, va_list argptr);
 
 /*
 ** -------------------------- Numbers Functions --------------------------------
@@ -74,6 +78,8 @@ void                    print_address_hex(void* p0);
 
 void                    MyFloat(double fVal);
 void convertDecimalToOctal(unsigned int  decimalNumber);
+void MyGFloat(double f);
+void byte_to_binary(int x);
 
 //void					itoa_printf(intmax_t d, t_printf *p, int len);
 //void					itoa_base_printf(uintmax_t d, int b, t_printf *p);
