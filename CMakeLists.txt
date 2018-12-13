@@ -23,10 +23,10 @@ add_executable(printf
         libft/ft_strncat.c
         libft/ft_atoi.c
         libft/Makefile
-        srcs/flags.c
+
         srcs/float.c
         srcs/ft_printf.c
         srcs/hex.c
-        author
+
         Makefile
         qwe.c)

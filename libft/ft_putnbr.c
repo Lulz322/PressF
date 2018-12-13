@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr(long long n)
 {
 	if (n < -9 || n > 9)
 		ft_putnbr(n / 10);

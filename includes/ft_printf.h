@@ -27,6 +27,18 @@
 #include <locale.h>
 
 unsigned int symbols;
+int i;
+
+typedef struct s_cvars{
+	char flag;
+	char symbol;
+	int width;
+	char *length;
+	int prec;
+} t_cvars;
+
+t_cvars g_cvars;
+
 
 /*
 ** -------------------------- Macros Definition --------------------------------
@@ -64,10 +76,18 @@ int						ft_dprintf(int fd, const char *format, ...);
 ** -------------------------- Parsing Functions --------------------------------
 */
 
-void check_symbol(char format, va_list argptr);
-void parsing(const char *format, int i, va_list argptr);
-void check_flags(const char *format, int i, va_list argptr);
-
+int check_symbol(char format, va_list argptr);
+void parsing(const char *format, va_list argptr);
+t_cvars check_flags(const char *format, va_list argptr);
+void check_cvars(const char *format, va_list argptr);
+void check_width(const char *format, va_list argptr);
+void check_prec(const char *format);
+void check_length(const char *format);
+void prec(int sign, char *str);
+void width_helper(char *str, int sign, int b, char *str_s);
+void prec_helper(char *str, int sign, int b, char *str_s);
+void clean(void);
+void print_number_o(const char *format, va_list argptr);
 /*
 ** -------------------------- Numbers Functions --------------------------------
 */

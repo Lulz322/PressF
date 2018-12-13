@@ -86,7 +86,7 @@ char			*ft_itoa(int n);
 void			ft_putendl(char const *s);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putnbr_fd(int n, int fd);
-void			ft_putnbr(int n);
+void			ft_putnbr(long long n);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 t_list			*ft_lstnew(void const *content, size_t content_size);
@@ -99,4 +99,5 @@ int        ft_strchri_lu(char *s, int c, int i);
 int        ft_strchri(char *s, int c, int i);
 size_t        ft_wstrlen(unsigned *s);
 size_t    ft_wcharlen(unsigned wc);
+int		len(long nb);
 #endif
