@@ -10,7 +10,7 @@ static int ft_round(double number)
     return (number >= 0) ? (int)(number + 0.5) : (int)(number - 0.5);
 }
 
-void MyFloat(double f)
+char * MyFloat(double f)
 {
     char *str;
     int size = 6;
@@ -41,11 +41,11 @@ void MyFloat(double f)
         curr = ft_itoa(value);
         str[pos++] = *curr;
     }
-    ft_putstr(str);
+    return (str);
 
 }
 
-void MyGFloat(double f)
+char * MyGFloat(double f)
 {
     char *str;
     int size = 2;
@@ -84,7 +84,7 @@ void MyGFloat(double f)
             str[pos] = '\0';
         pos++;
     }
-    ft_putstr(str);
+    return (str);
 
 }
 

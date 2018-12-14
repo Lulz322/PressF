@@ -30,6 +30,7 @@ unsigned int symbols;
 int i;
 
 typedef struct s_cvars{
+	char dot;
 	char flag;
 	char symbol;
 	int width;
@@ -95,10 +96,13 @@ char *print_number_part_two_o(long long b, int sign);
 char *print_number_part_one_o(long long b, int sign);
 char *print_number_part_two_x(char *, int sign);
 char *print_number_part_one_x(char *, int sign);
+char *print_number_part_one_f(char *b, int sign);
+char *print_number_part_two_f(char *b, int sign);
 void print_number(va_list argptr);
 void print_number_o(va_list argptr);
 void print_number_x(va_list argptr);
 void print_number_u(va_list argptr);
+void print_number_f(va_list argptr);
 
 /*
 ** -------------------------- Numbers Functions --------------------------------
@@ -108,10 +112,11 @@ char *                 prntnum_lower(unsigned int num, char sign , int base);
 char *                   prntnum_upper(unsigned int num, char sign , int base);
 void                    print_address_hex(void* p0);
 
-void                    MyFloat(double fVal);
+char *                   MyFloat(double fVal);
 int convertDecimalToOctal(unsigned int  decimalNumber);
-void MyGFloat(double f);
+char * MyGFloat(double f);
 void byte_to_binary(int x);
+void prec_f(int sign, char *str);
 
 //void					itoa_printf(intmax_t d, t_printf *p, int len);
 //void					itoa_base_printf(uintmax_t d, int b, t_printf *p);

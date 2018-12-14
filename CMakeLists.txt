@@ -29,4 +29,4 @@ add_executable(printf
         srcs/hex.c
 
         Makefile
-        qwe.c)
+        qwe.c srcs/prec.c)
