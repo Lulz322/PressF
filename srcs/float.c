@@ -35,7 +35,7 @@ char * MyFloat(double f)
     str[pos++] = '.';
     while(pos < (size + len + 1) )
     {
-        f = f - (float)value;
+        f = f - (double)value;
         f *= 10;
         value = (ft_round(f));
         curr = ft_itoa(value);
@@ -73,7 +73,7 @@ char * MyGFloat(double f)
     {
         f = f - (float)value;
         f *= 10;
-        value = (int)(ft_round(f));
+       // value = (int)(ft_round(f));
         curr = ft_itoa(value);
         str[pos++] = *curr;
     }

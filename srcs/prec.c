@@ -59,6 +59,13 @@ void prec_f(int sign, char *str)
 			j++;
 		str[j] = '\0';
 	}
+	if (g_cvars.flag == '+')
+		ft_putchar('+');
+	if (g_cvars.flag == '-')
+		if(ft_atoi(str) >= 0)
+			ft_putchar(' ');
+	else
+		ft_putchar('-');
 }
 
 char *prec_helper(char *str, char *str_s)
@@ -115,7 +122,8 @@ void width_helper(char *str, int sign)
 			ft_putstr(str);
 			return ;
 		}
-
+		if (g_cvars.flag == ' ' || g_cvars.flag == '+' || g_cvars.flag == '#')
+			g_cvars.width++;
 		while (j < g_cvars.width) {
 			if (g_cvars.flag == '0')
 				str_w[j++] = '0';
@@ -132,6 +140,8 @@ void width_helper(char *str, int sign)
 		}
 		if (sign == -1)
 			str_w[j + 1] = '-';
+		if (g_cvars.flag == '+')
+			str_w[j] = '+';
 		ft_putstr(str_w);
 	}
 }

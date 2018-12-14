@@ -147,6 +147,16 @@ void print_number(va_list argptr) {
 	}
 	if (g_cvars.width)
 		width_helper(str_s, sign);
+	else {
+		if (g_cvars.flag == '+')
+			ft_putstr(" +");
+		if (g_cvars.flag == '-')
+			if (ft_atoi(str_s) >= 0)
+				ft_putchar(' ');
+		if (g_cvars.flag == '#')
+			ft_putchar(' ');
+		ft_putstr(str_s);
+	}
 	clean();
 }
 
@@ -215,7 +225,17 @@ void print_number_o(va_list argptr) {
 		str_s = print_number_part_two_o(b, sign);
 	}
 	if (g_cvars.width)
-		width_helper(ft_itoa(b), sign);
+		width_helper(str_s, sign);
+	else {
+		if (g_cvars.flag == '+')
+			ft_putstr(" +");
+		if (g_cvars.flag == '-')
+			if (ft_atoi(str_s) >= 0)
+				ft_putchar(' ');
+		if (g_cvars.flag == '#')
+			ft_putchar(' ');
+		ft_putstr(str_s);
+	}
 	clean();
 }
 
@@ -241,49 +261,6 @@ char *print_number_part_two_x(char *b, int sign)
 	return str_s;
 }
 char *print_number_part_one_x(char *b, int sign)
-{
-	char *str_s;
-	char *str[g_cvars.width + g_cvars.prec + 1];
-
-	if (g_cvars.length == "h") {
-		str_s = b;
-		if (g_cvars.prec) {
-			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
-		}
-	}
-	if (g_cvars.length == "hh") {
-		str_s = b;
-		if (g_cvars.prec) {
-			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
-		}
-	}
-	return str_s;
-}
-
-char *print_number_part_two_f(char *b, int sign)
-{
-	char *str_s;
-	char *str[g_cvars.width + g_cvars.prec + 1];
-
-	if (g_cvars.length == "ll") {
-		str_s = b;
-		if (g_cvars.prec) {
-			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
-		}
-	}
-	else if (g_cvars.length == "l") {
-		str_s = b;
-		if (g_cvars.prec) {
-			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
-		}
-	}
-	return str_s;
-}
-char *print_number_part_one_f(char *b, int sign)
 {
 	char *str_s;
 	char *str[g_cvars.width + g_cvars.prec + 1];
@@ -358,8 +335,16 @@ void print_number_f(va_list argptr) {
 	prec_f(sign, str_s);
 	if (g_cvars.width)
 		width_helper(str_s, sign);
-	else
+	else {
+		if (g_cvars.flag == '+')
+			ft_putstr(" +");
+		if (g_cvars.flag == '-')
+			if (ft_atoi(str_s) >= 0)
+				ft_putchar(' ');
+		if (g_cvars.flag == '#')
+			ft_putchar(' ');
 		ft_putstr(str_s);
+	}
 	clean();
 }
 

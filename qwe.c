@@ -6,8 +6,8 @@ int main(void)
 {
     char *qwe = "ewoihewro";
 
-    ft_printf("%0101lf\n", 5124.3);
-    printf("%s\n%0101lf", "Test", 5124.3);
+    ft_printf("%s\npijsd@@@e21l\n%10hd, 123%+10lf\n", "YOYO-CHEATERA", 123456, 1337.1488);
+    printf("%s\npijsd@@@e21l\n%10hd, 123%+10lf\n", "YOYO-CHEATERA", 123456, 1337.1488);
 
     return (0);
 }
