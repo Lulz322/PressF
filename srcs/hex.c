@@ -4,13 +4,13 @@
 
 #include "../includes/ft_printf.h"
 
-void prntnum_lower(unsigned int num, char sign , int base)
+char *prntnum_lower(unsigned int num, char sign , int base)
 {
-
     int i = 12;
     int j = 0;
-    char outbuf[255];
+    char *outbuf;
 
+    outbuf = ft_strnew(sizeof(char) * 255);
     do{
         outbuf[i] = "0123456789abcdef"[num % base];
         i--;
@@ -27,17 +27,17 @@ void prntnum_lower(unsigned int num, char sign , int base)
     }
 
     outbuf[j] = 0;
-    ft_putstr(outbuf);
+    return (outbuf);
 
 }
 
-void prntnum_upper(unsigned int num, char sign , int base)
+char * prntnum_upper(unsigned int num, char sign , int base)
 {
 
     int i = 12;
     int j = 0;
-    char outbuf[255];
-
+    char *outbuf;
+    outbuf = ft_strnew(sizeof(char) * 255);
     do{
         outbuf[i] = "0123456789ABCDEF"[num % base];
         i--;
@@ -54,7 +54,7 @@ void prntnum_upper(unsigned int num, char sign , int base)
     }
 
     outbuf[j] = 0;
-    ft_putstr(outbuf);
+    return (outbuf);
 
 }
 
@@ -88,7 +88,7 @@ void print_address_hex(void* p0) {
 
 }
 
-void convertDecimalToOctal(unsigned int  decimalNumber)
+int convertDecimalToOctal(unsigned int  decimalNumber)
 {
     int octalNumber = 0, i = 1;
 
@@ -99,5 +99,5 @@ void convertDecimalToOctal(unsigned int  decimalNumber)
         i *= 10;
     }
 
-    ft_putnbr(octalNumber);
+    return octalNumber;
 }

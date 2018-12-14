@@ -6,8 +6,8 @@ int main(void)
 {
     char *qwe = "ewoihewro";
 
-    ft_printf("%s\n%10.5hd  %1.4hd\n", "This is test string", 121251, 21321321);
-    printf("%s\n%10.5hd  %1.4hd\n", "This is test string", 121251, 21321321);
+    ft_printf("\n%10.12llo  %.5hd   %10hhu\n", 121251, 2143, 13);
+    printf("\n%10.12llo  %.5hd   %10hhu\n", 121251, 2143, 13);
 
     return (0);
 }
@@ -38,11 +38,12 @@ void prec(int sign, char *str)
 		}
 		if (sign == -1)
 			str_w[j + 1] = '-';
-		ft_putstr(str_w);
+		if (!(g_cvars.width))
+			ft_putstr(str_w);
 	}
 }
 
-void prec_helper(char *str, int sign, int b, char *str_s)
+char *prec_helper(char *str, char *str_s)
 {
 	int j;
 	int z;
@@ -50,7 +51,7 @@ void prec_helper(char *str, int sign, int b, char *str_s)
 	j = 0;
 	z = 0;
 	if (g_cvars.prec) {
-		while (j <= g_cvars.prec) {
+		while (j < g_cvars.prec) {
 			str[j] = '0';
 			j++;
 		}
@@ -67,9 +68,10 @@ void prec_helper(char *str, int sign, int b, char *str_s)
 			z--;
 		}
 	}
+	return (str);
 }
 
-void width_helper(char *str, int sign, int b, char *str_s)
+void width_helper(char *str, int sign)
 {
 	int j;
 	int z;

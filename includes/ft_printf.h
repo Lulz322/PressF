@@ -76,7 +76,8 @@ int						ft_dprintf(int fd, const char *format, ...);
 ** -------------------------- Parsing Functions --------------------------------
 */
 
-int check_symbol(char format, va_list argptr);
+int check_symbol(char format);
+int print_symbol(char format, va_list argptr);
 void parsing(const char *format, va_list argptr);
 t_cvars check_flags(const char *format, va_list argptr);
 void check_cvars(const char *format, va_list argptr);
@@ -84,20 +85,31 @@ void check_width(const char *format, va_list argptr);
 void check_prec(const char *format);
 void check_length(const char *format);
 void prec(int sign, char *str);
-void width_helper(char *str, int sign, int b, char *str_s);
-void prec_helper(char *str, int sign, int b, char *str_s);
+void width_helper(char *str, int sign);
+char * prec_helper(char *str, char *str_s);
 void clean(void);
-void print_number_o(const char *format, va_list argptr);
+
+char *print_number_part_two_d(long long b, int sign);
+char *print_number_part_one_d(long long b, int sign);
+char *print_number_part_two_o(long long b, int sign);
+char *print_number_part_one_o(long long b, int sign);
+char *print_number_part_two_x(char *, int sign);
+char *print_number_part_one_x(char *, int sign);
+void print_number(va_list argptr);
+void print_number_o(va_list argptr);
+void print_number_x(va_list argptr);
+void print_number_u(va_list argptr);
+
 /*
 ** -------------------------- Numbers Functions --------------------------------
 */
 
-void                    prntnum_lower(unsigned int num, char sign , int base);
-void                    prntnum_upper(unsigned int num, char sign , int base);
+char *                 prntnum_lower(unsigned int num, char sign , int base);
+char *                   prntnum_upper(unsigned int num, char sign , int base);
 void                    print_address_hex(void* p0);
 
 void                    MyFloat(double fVal);
-void convertDecimalToOctal(unsigned int  decimalNumber);
+int convertDecimalToOctal(unsigned int  decimalNumber);
 void MyGFloat(double f);
 void byte_to_binary(int x);
 
