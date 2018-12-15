@@ -156,7 +156,9 @@ void print_number(va_list argptr) {
 		if (g_cvars.flag == '#')
 			ft_putchar(' ');
 		ft_putstr(str_s);
+		free(str_s);
 	}
+
 	clean();
 }
 
@@ -355,6 +357,20 @@ void parsing(const char *format, va_list argptr)
 	check_cvars(format, argptr);
 	if (g_cvars.length == "\0" && g_cvars.width == 0 && g_cvars.prec == 0)
 		print_symbol(format[i], argptr);
+	if (g_cvars.symbol == '\0')
+	{
+		ft_putchar('%');
+		if (g_cvars.width)
+			ft_putnbr(g_cvars.width);
+		if (g_cvars.dot)
+			ft_putchar(g_cvars.dot);
+		if (g_cvars.prec)
+			ft_putnbr(g_cvars.prec);
+		if (g_cvars.length != "\0")
+			ft_putstr(g_cvars.length);
+		i--;
+		clean();
+	}
 	if (g_cvars.symbol == 'd')
 		print_number( argptr);
 	if (g_cvars.symbol == 'o')
@@ -416,8 +432,10 @@ int check_symbol(char format)
 		g_cvars.symbol = 'k';
 	else if (format == 'g')
 		g_cvars.symbol = 'g';
-	else
+	else {
+		g_cvars.symbol = '\0';
 		return (0);
+	}
 	return (1);
 }
 int print_symbol(char format, va_list argptr)
@@ -471,6 +489,7 @@ int ft_printf(const char *format, ...)
     i++;
     }
     va_end( argptr );
+    clean();
 	return (symbols);
 }
 

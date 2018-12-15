@@ -96,8 +96,6 @@ char *print_number_part_two_o(long long b, int sign);
 char *print_number_part_one_o(long long b, int sign);
 char *print_number_part_two_x(char *, int sign);
 char *print_number_part_one_x(char *, int sign);
-char *print_number_part_one_f(char *b, int sign);
-char *print_number_part_two_f(char *b, int sign);
 void print_number(va_list argptr);
 void print_number_o(va_list argptr);
 void print_number_x(va_list argptr);

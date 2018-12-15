@@ -14,7 +14,7 @@ C = clang
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra -Werror -O2
+//FLAGS = -Wall -Wextra -Werror -O2
 
 LIBFT = libft
 
@@ -27,6 +27,7 @@ HEADER = includes
 SOURCES = ft_printf.c \
 			hex.c \
 			float.c \
+			prec.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

@@ -12,37 +12,40 @@ static int ft_round(double number)
 
 char * MyFloat(double f)
 {
-    char *str;
-    int size = 6;
-    unsigned char pos;
-    char len;
-    char* curr;
-    int value;
 
-    pos = 0;
+	char size = '4';
+	char *str;
+	char pos;  // position in string
+	char len;  // length of decimal part of result
+	char* curr;  // temp holder for next digit
+	int value;  // decimal digit(s) to convert
 
-    value = (int)f;
-    str = ft_itoa(value);
+	f += 0.0000005;
+	pos = 0;  // initialize pos, just to be sure
 
-    if (f < 0 )
-    {
-        f *= -1;
-        value *= -1;
-    }
+	value = (int)f;  // truncate the floating point number
+	str = ft_itoa(value);  // this is kinda dangerous depending on the length of str
+	// now str array has the digits before the decimal
 
-    len = ft_strlen(str);
-    pos = len;
-    str[pos++] = '.';
-    while(pos < (size + len + 1) )
-    {
-        f = f - (double)value;
-        f *= 10;
-        value = (ft_round(f));
-        curr = ft_itoa(value);
-        str[pos++] = *curr;
-    }
-    return (str);
+	if (f < 0 )  // handle negative numbers
+	{
+		f *= -1;
+		value *= -1;
+	}
 
+	len = strlen(str);  // find out how big the integer part was
+	pos = len;  // position the pointer to the end of the integer part
+	str[pos++] = '.';  // add decimal point to string
+
+	while(pos < (len + 7) )  // process remaining digits
+	{
+		f = f - (float)value;  // hack off the whole part of the number
+		f *= 10;  // move next digit over
+		value = (int)f;  // get next digit
+		curr = ft_itoa(value); // convert digit to string
+		str[pos++] = *curr; // add digit to result string and increment pointer
+	}
+	return (str);
 }
 
 char * MyGFloat(double f)
@@ -55,7 +58,7 @@ char * MyGFloat(double f)
     int value;
 
     pos = 0;
-
+	//f += 0.005;
     value = (int)f;
     str = ft_itoa(value);
 
@@ -73,7 +76,6 @@ char * MyGFloat(double f)
     {
         f = f - (float)value;
         f *= 10;
-       // value = (int)(ft_round(f));
         curr = ft_itoa(value);
         str[pos++] = *curr;
     }
