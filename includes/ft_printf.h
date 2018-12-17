@@ -106,7 +106,7 @@ void print_number_f(va_list argptr);
 ** -------------------------- Numbers Functions --------------------------------
 */
 
-char *                 prntnum_lower(unsigned int num, char sign , int base);
+char *                 prntnum_lower(long long num, char sign , int base);
 char *                   prntnum_upper(unsigned int num, char sign , int base);
 void                    print_address_hex(void* p0);
 

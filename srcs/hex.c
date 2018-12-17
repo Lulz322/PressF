@@ -4,7 +4,7 @@
 
 #include "../includes/ft_printf.h"
 
-char *prntnum_lower(unsigned int num, char sign , int base)
+char *prntnum_lower(long long num, char sign , int base)
 {
     int i = 12;
     int j = 0;

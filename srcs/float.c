@@ -33,7 +33,8 @@ char * MyFloat(double f)
 		value *= -1;
 	}
 
-	len = strlen(str);  // find out how big the integer part was
+
+	len = ft_strlen(str);  // find out how big the integer part was
 	pos = len;  // position the pointer to the end of the integer part
 	str[pos++] = '.';  // add decimal point to string
 
@@ -98,7 +99,7 @@ void byte_to_binary(int x)
 
     int z;
     for (z = 128; z > 0; z >>= 1)
-        strcat(b, ((x & z) == z) ? "1" : "0");
+        ft_strcat(b, ((x & z) == z) ? "1" : "0");
     ft_putstr(b);
 }
 

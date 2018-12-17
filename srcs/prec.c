@@ -102,8 +102,9 @@ char *prec_helper(char *str, char *str_s)
 			j--;
 			z--;
 		}
+		return(str_s);
 	}
-	return (str);
+	return (str_s);
 }
 
 void width_helper(char *str, int sign)
