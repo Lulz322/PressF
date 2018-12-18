@@ -36,7 +36,7 @@ static		void	check_sign(const char *str, int *i, int *sign)
 int					ft_atoi(const char *str)
 {
 	int		i;
-	int		answer;
+	long long int		answer;
 	int		sign;
 
 	sign = 0;

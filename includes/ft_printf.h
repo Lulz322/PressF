@@ -31,13 +31,14 @@ int i;
 
 typedef struct s_cvars{
 	char dot;
-	char flag;
+	char flag[5];
 	char symbol;
 	int width;
 	char *length;
 	int prec;
 } t_cvars;
 
+// 0 | ' '     1 | +    2 | 0     3 | -  4| #
 t_cvars g_cvars;
 
 
@@ -90,8 +91,8 @@ void width_helper(char *str, int sign);
 char * prec_helper(char *str, char *str_s);
 void clean(void);
 
-char *print_number_part_two_d(long long b, int sign);
-char *print_number_part_one_d(long long b, int sign);
+char *print_number_part_two_d(long long int b, int sign);
+char *print_number_part_one_d(long long int b, int sign);
 char *print_number_part_two_o(long long b, int sign);
 char *print_number_part_one_o(long long b, int sign);
 char *print_number_part_two_x(char *, int sign);

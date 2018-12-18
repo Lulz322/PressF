@@ -10,6 +10,9 @@ void prec(int sign, char *str)
 	int z;
 	char str_w[g_cvars.prec + 1];
 
+	if (ft_atoi(str) < 0)
+		sign = -1;
+
 	if (g_cvars.prec)
 	{
 		j = 0;
@@ -26,8 +29,13 @@ void prec(int sign, char *str)
 		}
 		if (sign == -1)
 			str_w[j + 1] = '-';
-		if (!(g_cvars.width))
+		if (!(g_cvars.width)) {
+			if (g_cvars.flag[3] == '-' && sign != -1)
+				ft_putchar('-');
+			if (g_cvars.flag[3] == '+' && sign != 1)
+				ft_putchar('+');
 			ft_putstr(str_w);
+		}
 	}
 }
 void prec_f(int sign, char *str)
@@ -68,6 +76,7 @@ void prec_f(int sign, char *str)
 		ft_putchar('-');
 }
 
+
 char *prec_helper(char *str, char *str_s)
 {
 	int j;
@@ -76,6 +85,8 @@ char *prec_helper(char *str, char *str_s)
 	j = 0;
 	z = 0;
 	if (g_cvars.prec) {
+			if (g_cvars.flag[1] || g_cvars.flag[3])
+				g_cvars.prec++;
 		if (g_cvars.prec < len(ft_atoi(str_s)))
 		{
 			while (j < len(ft_atoi(str_s)))
@@ -102,7 +113,7 @@ char *prec_helper(char *str, char *str_s)
 			j--;
 			z--;
 		}
-		return(str_s);
+		return (str);
 	}
 	return (str_s);
 }
@@ -113,36 +124,56 @@ void width_helper(char *str, int sign)
 	int z;
 	char str_w[g_cvars.width + 1];
 
-	if (g_cvars.width)
-	{
+
+	if (ft_atoi(str) < 0)
+		sign = -1;
+	if (g_cvars.width) {
 		j = 0;
 		z = ft_strlen(str);
 		z--;
-		if (g_cvars.width < ft_strlen(str))
-		{
+		if (g_cvars.width < ft_strlen(str)) {
 			ft_putstr(str);
-			return ;
+			return;
 		}
-		if (g_cvars.flag == ' ' || g_cvars.flag == '+' || g_cvars.flag == '#')
-			g_cvars.width++;
+			//if (g_cvars.flag[1] || g_cvars.flag[3])
+			//	g_cvars.width++;
 		while (j < g_cvars.width) {
-			if (g_cvars.flag == '0')
+			if (g_cvars.flag[2] == '0')
 				str_w[j++] = '0';
 			else
 				str_w[j++] = ' ';
 		}
-
 		str_w[j] = '\0';
 		j--;
-		while (str_w[j] && str_w[j] && str[z]){
-			str_w[j] = str[z];
-			j--;
-			z--;
+		if (g_cvars.flag[3] != '-') {
+			while (str_w[j] && str[z]) {
+				if (g_cvars.flag[1] == '+')
+					if (str[z] == str[0] && !str[z - 1])
+						str_w[j - 1] = '+';
+				str_w[j] = str[z];
+				j--;
+				z--;
+			}
 		}
-		if (sign == -1)
-			str_w[j + 1] = '-';
-		if (g_cvars.flag == '+')
-			str_w[j] = '+';
+		else
+		{
+			j = 1;
+			z = 0;
+			if (g_cvars.flag[1] == '+' && sign != -1)
+				str_w[0] = '+';
+			if (g_cvars.flag[3] == '-' && sign == -1)
+				str_w[0] = '-';
+			if (sign == -1)
+				z++;
+			while (j < g_cvars.width)
+			{
+				if (str[z] && str_w[j])
+					str_w[j] = str[z];
+				z++;
+				j++;
+			}
+		}
+
 		ft_putstr(str_w);
 	}
 }
