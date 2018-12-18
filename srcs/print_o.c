@@ -90,7 +90,7 @@ void print_number_o(va_list argptr) {
 	clean();
 }
 
-//
+
 void print_number_u(va_list argptr) {
 	long long  b;
 	unsigned int size;

@@ -17,7 +17,7 @@ t_cvars check_flags(const char *format, va_list argptr) {
 		i++;
 	}
 }
-//
+
 
 void check_width(const char *format, va_list argptr)
 {
