@@ -154,7 +154,7 @@ void width_helper(char *str, int sign)
 				j--;
 				z--;
 			}
-		}
+		}//
 		else
 		{
 			j = 1;

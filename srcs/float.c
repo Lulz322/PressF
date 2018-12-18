@@ -9,7 +9,7 @@ static int ft_round(double number)
 {
     return (number >= 0) ? (int)(number + 0.5) : (int)(number - 0.5);
 }
-
+//
 char * MyFloat(double f)
 {
 

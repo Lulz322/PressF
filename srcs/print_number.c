@@ -55,7 +55,7 @@ char *print_number_part_one_d(long long b, int sign)
 	return str_s;
 }
 
-
+//
 void print_number(va_list argptr) {
 	long long int b;
 	char *str_s;

@@ -30,22 +30,11 @@ int				ft_pow(int a, int b);
 void			ft_is_negative(int n);
 int				ft_multiply(int a, int b);
 int				ft_sqr(int a);
-char			*ft_strncat(char *restrict s1,
-		const char *restrict s2, size_t n);
-char			*ft_strcat(char *restrict s1, const char *restrict s2);
-char			*ft_strncpy(char *dst, const char *src, size_t len);
 char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strdup(const char *s1);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memchr(const void *s, int c, size_t n);
-void			*ft_memccpy(void *restrict dst,
-					const void *restrict src, int c, size_t n);
-size_t			ft_strlcat(char *restrict dst,
-				const char *restrict src, size_t dstsize);
-void			*ft_memcpy(void *restrict dst, const void *restrict src,
-				size_t n);
-void			ft_bzero(void *s, size_t n);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_putchar(unsigned char c);
 void			ft_swap(int *a, int *b);
@@ -93,11 +82,10 @@ t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-void			ft_lstadd(t_list **alst, t_list *new);
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int        ft_strchri_lu(char *s, int c, int i);
 int        ft_strchri(char *s, int c, int i);
 size_t        ft_wstrlen(unsigned *s);
 size_t    ft_wcharlen(unsigned wc);
-int		len(long nb);
+int		len(long long  nb);
 #endif

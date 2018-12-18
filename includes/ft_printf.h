@@ -35,7 +35,7 @@ typedef struct s_cvars{
 	char symbol;
 	int width;
 	char *length;
-	int prec;
+	int prec;//
 } t_cvars;
 
 // 0 | ' '     1 | +    2 | 0     3 | -  4| #
