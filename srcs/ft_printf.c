@@ -152,7 +152,12 @@ void parsing(const char *format, va_list argptr)
 		print_number_x(argptr);
 	if (g_cvars.symbol == 'f')
 		print_number_f(argptr);
-
+	if (g_cvars.symbol == '%')
+		ft_putchar('%');
+	if (g_cvars.symbol == 's' )
+		ft_putstr(va_arg( argptr, char * ));
+	if (g_cvars.symbol == 'c' )
+		ft_putchar((unsigned char)va_arg( argptr, int ));
 
 
 

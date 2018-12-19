@@ -90,3 +90,39 @@ void print_number(va_list argptr) {
 
 	clean();
 }
+
+void print_procent(void)
+{
+	long long int b;
+	char *str_s;
+	char str[g_cvars.prec + g_cvars.width + 1];
+	int sign;
+
+	sign = 1;
+	b = 2;
+
+	if (ft_strcmp(g_cvars.length, "\0")) {
+		str_s = print_number_part_one_d(b, sign);
+		str_s = print_number_part_two_d(b, sign);
+	}
+	else {
+
+		str_s = prec_helper(str, ft_itoa(b));
+		prec(sign, str_s);
+	}
+	if (g_cvars.width)
+		width_helper(str_s, sign);
+	if (!g_cvars.width && !g_cvars.prec)
+	{
+		if (g_cvars.flag[1] == '+')
+			ft_putstr(" +");
+		if (g_cvars.flag[3] == '-')
+			if (ft_atoi(str_s) >= 0)
+				ft_putchar(' ');
+		if (g_cvars.flag[4] == '#')
+			ft_putchar(' ');
+		ft_putstr("%");
+	}
+
+	clean();
+}

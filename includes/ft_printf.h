@@ -102,7 +102,7 @@ void print_number_o(va_list argptr);
 void print_number_x(va_list argptr);
 void print_number_u(va_list argptr);
 void print_number_f(va_list argptr);
-
+void print_procent();
 /*
 ** -------------------------- Numbers Functions --------------------------------
 */

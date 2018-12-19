@@ -40,7 +40,7 @@ char * MyFloat(double f)
 
 	while(pos < (len + 7) )  // process remaining digits
 	{
-		f = f - (float)value;  // hack off the whole part of the number
+		f = f - (double)value;  // hack off the whole part of the number
 		f *= 10;  // move next digit over
 		value = (int)f;  // get next digit
 		curr = ft_itoa(value); // convert digit to string
@@ -99,7 +99,7 @@ void byte_to_binary(int x)
 
     int z;
     for (z = 128; z > 0; z >>= 1)
-        ft_strcat(b, ((x & z) == z) ? "1" : "0");
+        strcat(b, ((x & z) == z) ? "1" : "0");
     ft_putstr(b);
 }
 
