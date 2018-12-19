@@ -121,17 +121,10 @@ void print_number_f(va_list argptr) {
 		return ;
 	}
 	if (g_cvars.width)
-		width_helper(str_s, sign);
-	else {
-		if (g_cvars.flag == '+')
-			ft_putstr(" +");
-		if (g_cvars.flag == '-')
-			if (ft_atoi(str_s) >= 0)
-				ft_putchar(' ');
-		if (g_cvars.flag == '#')
-			ft_putchar(' ');
+		str_s = width_helper(str_s, sign);
+	print_number_h(str_s);
+	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
-	}
 	clean();
 }
 

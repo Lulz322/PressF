@@ -4,38 +4,32 @@
 
 #include "../includes/ft_printf.h"
 
-char *print_number_part_two_d(long long  b, int sign)
+char *print_number_part_two_d(long long  b)
 {
 	char *str_s;
 	char *str[g_cvars.width + g_cvars.prec + 1];
 
 	if (!(ft_strcmp(g_cvars.length, "ll"))) {
 		str_s = ft_itoa(b);
-		if (b < 0)
-			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
 		}
 	}
 	else if (!(ft_strcmp(g_cvars.length, "l"))) {
 		str_s = ft_itoa((long)b);
-		if ((long int)b < 0)
-			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
 		}
 	}
 	return str_s;
 }
-char *print_number_part_one_d(long long b, int sign)
+char *print_number_part_one_d(long long b)
 {
 	char *str_s;
 	char *str[g_cvars.width + g_cvars.prec + 1];
 
 	if (!(ft_strcmp(g_cvars.length, "h"))) {
 		str_s = ft_itoa((short int)b);
-		if ((short int)b < 0)
-			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
 		}
@@ -43,8 +37,6 @@ char *print_number_part_one_d(long long b, int sign)
 	}
 	if (!(ft_strcmp(g_cvars.length, "hh"))) {
 		str_s = ft_itoa((signed char)b);
-		if ((signed char)b < 0)
-			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
 		}
@@ -76,7 +68,7 @@ void print_number_h(char *str)
 			return ;
 		}
 		while (str[++i] == ' ');
-		if (ft_atoi(str) < 0)
+		if (ft_atoi(str) < 0 && !g_cvars.width)
 			i--;
 		while (str[i])
 			ft_putchar(str[i++]);
@@ -94,8 +86,8 @@ void print_number(va_list argptr) {
 	sign = 1;
 	b = va_arg(argptr, int);
 	if (ft_strcmp(g_cvars.length, "\0")) {
-		str_s = print_number_part_one_d(b, sign);
-		str_s = print_number_part_two_d(b, sign);
+		str_s = print_number_part_one_d(b);
+		str_s = print_number_part_two_d(b);
 	}
 	else {
 		str_s = ft_itoa(b);

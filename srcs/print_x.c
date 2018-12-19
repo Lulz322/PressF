@@ -56,19 +56,18 @@ void print_number_x(va_list argptr) {
 	else
 		b = prntnum_upper(sign, ' ', 16);
 	if (ft_strcmp(g_cvars.length, "\0")) {
-		str_s = print_number_part_one_x(b, sign);
-		str_s = print_number_part_two_x(b, sign);
+		str_s = print_number_part_one_d(b);
+		str_s = print_number_part_two_d(b);
 	}
 	else {
-
-		str_s = prec_helper(str, b);
+		str_s = b;
+		if (g_cvars.prec)
+			str_s = prec_helper(str, str_s);
 	}
 	if (g_cvars.width)
-		width_helper(str_s, sign);
-	if (!g_cvars.width && !g_cvars.prec)
-	{
+		str_s = width_helper(str_s, sign);
+	print_number_h(str_s);
+	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
-	}
-
 	clean();
 }

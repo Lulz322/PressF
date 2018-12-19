@@ -106,13 +106,14 @@ char *width_helper(char *str, int sign);
 char *prec_helper(char *str, char *str_s);
 void clean(void);
 
-char *print_number_part_two_d(long long int b, int sign);
-char *print_number_part_one_d(long long int b, int sign);
+char *print_number_part_two_d(long long int b);
+char *print_number_part_one_d(long long int b);
 char *print_number_part_two_o(long long b, int sign);
 char *print_number_part_one_o(long long b, int sign);
 char *print_number_part_two_x(char *, int sign);
 char *print_number_part_one_x(char *, int sign);
 void print_number(va_list argptr);
+void print_number_h(char *str);
 void print_number_o(va_list argptr);
 void print_number_x(va_list argptr);
 void print_number_u(va_list argptr);

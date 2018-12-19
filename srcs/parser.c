@@ -31,7 +31,7 @@ void parsing(const char *format, va_list argptr)
 	    g_cvars.symbol != 'u' && g_cvars.symbol != 'i' && g_cvars.symbol != 'c' &&
 	    g_cvars.symbol != '\0' && g_cvars.symbol != 'p' && g_cvars.symbol != 'x' &&
 	    g_cvars.symbol != '%' && g_cvars.symbol != 'X' && g_cvars.symbol != 'h' &&
-	    g_cvars.symbol != 'l' && g_cvars.symbol != 0)
+	    g_cvars.symbol != 'l' && g_cvars.symbol != 0 && g_cvars.symbol != 'f')
 	{
 		ft_putchar(g_cvars.symbol);
 		clean();

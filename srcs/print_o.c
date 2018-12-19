@@ -61,27 +61,21 @@ void print_number_o(va_list argptr) {
 	b = va_arg(argptr, unsigned int);
 	b = convertDecimalToOctal(b);
 	if (ft_strcmp(g_cvars.length, "\0")) {
-		str_s = print_number_part_one_d(b, sign);
-		str_s = print_number_part_two_d(b, sign);
+		str_s = print_number_part_one_d(b);
+		str_s = print_number_part_two_d(b);
 	}
 	else {
-
-		str_s = prec_helper(str, ft_itoa(b));
+		str_s = ft_itoa(b);
+		if (b < 0)
+			sign = -1;
+		if (g_cvars.prec)
+			str_s = prec_helper(str, str_s);
 	}
 	if (g_cvars.width)
-		width_helper(str_s, sign);
-	if (!g_cvars.width && !g_cvars.prec)
-	{
-		if (g_cvars.flag[1] == '+')
-			ft_putstr(" +");
-		if (g_cvars.flag[3] == '-')
-			if (ft_atoi(str_s) >= 0)
-				ft_putchar(' ');
-		if (g_cvars.flag[4] == '#')
-			ft_putchar(' ');
+		str_s = width_helper(str_s, sign);
+	print_number_h(str_s);
+	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
-	}
-
 	clean();
 }
 
@@ -96,26 +90,20 @@ void print_number_u(va_list argptr) {
 	sign = 1;
 	b = va_arg(argptr, unsigned int);
 	if (ft_strcmp(g_cvars.length, "\0")) {
-		str_s = print_number_part_one_d(b, sign);
-		str_s = print_number_part_two_d(b, sign);
+		str_s = print_number_part_one_o(b, sign);
+		str_s = print_number_part_two_o(b, sign);
 	}
 	else {
-
-		str_s = prec_helper(str, ft_itoa(b));
+		str_s = ft_itoa(b);
+		if (b < 0)
+			sign = -1;
+		if (g_cvars.prec)
+			str_s = prec_helper(str, str_s);
 	}
 	if (g_cvars.width)
-		width_helper(str_s, sign);
-	if (!g_cvars.width && !g_cvars.prec)
-	{
-		if (g_cvars.flag[1] == '+')
-			ft_putstr(" +");
-		if (g_cvars.flag[3] == '-')
-			if (ft_atoi(str_s) >= 0)
-				ft_putchar(' ');
-		if (g_cvars.flag[4] == '#')
-			ft_putchar(' ');
+		str_s = width_helper(str_s, sign);
+	print_number_h(str_s);
+	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
-	}
-
 	clean();
 }
