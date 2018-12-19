@@ -90,7 +90,6 @@ void print_number(va_list argptr) {
 			ft_putchar(' ');
 		ft_putstr(str_s);
 	}
-
 	clean();
 }
 

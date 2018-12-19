@@ -99,7 +99,38 @@ void byte_to_binary(int x)
 
     int z;
     for (z = 128; z > 0; z >>= 1)
-        strcat(b, ((x & z) == z) ? "1" : "0");
+        ft_strcat(b, ((x & z) == z) ? "1" : "0");
     ft_putstr(b);
 }
 
+
+void print_number_f(va_list argptr) {
+	char *b;
+	char str[g_cvars.prec + g_cvars.width + 1];
+	char *str_s;
+	int sign;
+	double yo;
+
+	sign = 1;
+	yo = va_arg(argptr, double);
+	str_s = MyFloat(yo);
+	prec_f(sign, str_s);
+	if (!(ft_strcmp(g_cvars.length, "L")))
+	{
+		ft_putstr("nan");
+		return ;
+	}
+	if (g_cvars.width)
+		width_helper(str_s, sign);
+	else {
+		if (g_cvars.flag == '+')
+			ft_putstr(" +");
+		if (g_cvars.flag == '-')
+			if (ft_atoi(str_s) >= 0)
+				ft_putchar(' ');
+		if (g_cvars.flag == '#')
+			ft_putchar(' ');
+		ft_putstr(str_s);
+	}
+	clean();
+}

@@ -21,6 +21,7 @@ add_executable(printf
         libft/ft_swap.c
         libft/ft_memset.c
         libft/ft_strncat.c
+        libft/ft_strcat.c
         libft/ft_atoi.c
         libft/Makefile
 

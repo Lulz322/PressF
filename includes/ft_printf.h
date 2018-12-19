@@ -85,7 +85,7 @@ t_cvars check_flags(const char *format, va_list argptr);
 void check_cvars(const char *format, va_list argptr);
 void check_width(const char *format, va_list argptr);
 void check_prec(const char *format);
-void check_length(const char *format);
+int check_length(const char *format);
 void prec(int sign, char *str);
 void width_helper(char *str, int sign);
 char * prec_helper(char *str, char *str_s);

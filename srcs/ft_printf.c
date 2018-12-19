@@ -6,13 +6,13 @@ t_cvars check_flags(const char *format, va_list argptr) {
 	       || format[i] == '#' || format[i] == '0') {
 		if (format[i] == ' ')
 			g_cvars.flag[0] = ' ';
-		if (format[i] == '+')
+		else if (format[i] == '+')
 			g_cvars.flag[1] = '+';
-		if (format[i] == '0')
+		else if (format[i] == '0')
 			g_cvars.flag[2] = '0';
-		if (format[i] == '-')
+		else if (format[i] == '-')
 			g_cvars.flag[3] = '-';
-		if (format[i] == '#')
+		else if (format[i] == '#')
 			g_cvars.flag[4] = '#';
 		i++;
 	}
@@ -21,7 +21,6 @@ t_cvars check_flags(const char *format, va_list argptr) {
 
 void check_width(const char *format, va_list argptr)
 {
-	//
 	char *str;
 	*str = '\0';
 	int j;
@@ -46,7 +45,7 @@ void check_prec(const char *format)
 
 }
 
-void check_length(const char *format)
+int check_length(const char *format)
 {
 	if (format[i] == 'h' && format[i + 1] == 'h') {
 		g_cvars.length = "hh";
@@ -70,9 +69,13 @@ void check_length(const char *format)
 	{
 		g_cvars.length = "L";
 				i++;
+				return (1);
 	}
-	else
+	else {
 		g_cvars.length = "\0";
+		return (0);
+	}
+	return (1);
 }
 
 void clean(void)
@@ -89,81 +92,6 @@ void clean(void)
 }
 
 
-
-
-
-void print_number_f(va_list argptr) {
-	char *b;
-	char str[g_cvars.prec + g_cvars.width + 1];
-	char *str_s;
-	int sign;
-	double yo;
-
-	sign = 1;
-	yo = va_arg(argptr, double);
-	str_s = MyFloat(yo);
-	prec_f(sign, str_s);
-	if (!(ft_strcmp(g_cvars.length, "L")))
-	{
-		ft_putstr("nan");
-		return ;
-	}
-	if (g_cvars.width)
-		width_helper(str_s, sign);
-	else {
-		if (g_cvars.flag == '+')
-			ft_putstr(" +");
-		if (g_cvars.flag == '-')
-			if (ft_atoi(str_s) >= 0)
-				ft_putchar(' ');
-		if (g_cvars.flag == '#')
-			ft_putchar(' ');
-		ft_putstr(str_s);
-	}
-	clean();
-}
-
-
-void parsing(const char *format, va_list argptr)
-{
-	++i;
-	check_cvars(format, argptr);
-	if (g_cvars.symbol == '\0')
-	{
-		ft_putchar('%');
-		if (g_cvars.width)
-			ft_putnbr(g_cvars.width);
-		if (g_cvars.dot)
-			ft_putchar(g_cvars.dot);
-		if (g_cvars.prec)
-			ft_putnbr(g_cvars.prec);
-		if (g_cvars.length != "\0")
-			ft_putstr(g_cvars.length);
-		i--;
-		clean();
-	}
-	if (g_cvars.symbol == 'd')
-		print_number( argptr);
-	if (g_cvars.symbol == 'o')
-		print_number_o(argptr);
-	if (g_cvars.symbol == 'u')
-		print_number_u(argptr);
-	if ((g_cvars.symbol == 'x' || g_cvars.symbol == 'X'))
-		print_number_x(argptr);
-	if (g_cvars.symbol == 'f')
-		print_number_f(argptr);
-	if (g_cvars.symbol == '%')
-		ft_putchar('%');
-	if (g_cvars.symbol == 's' )
-		ft_putstr(va_arg( argptr, char * ));
-	if (g_cvars.symbol == 'c' )
-		ft_putchar((unsigned char)va_arg( argptr, int ));
-
-	clean();
-
-
-}
-
 void check_cvars(const char *format, va_list argptr)
 {
 	check_flags(format, argptr);
@@ -177,44 +105,58 @@ void check_cvars(const char *format, va_list argptr)
 }
 
 
+void parsing(const char *format, va_list argptr)
+{
+	++i;
+	check_cvars(format, argptr);
+	if (g_cvars.symbol == 0)
+	{
+		--i;
+		return;
+	}
+	if (g_cvars.symbol != 'd' && g_cvars.symbol != 's' && g_cvars.symbol != 'o' &&
+		g_cvars.symbol != 'u' && g_cvars.symbol != 'i' && g_cvars.symbol != 'c' &&
+		g_cvars.symbol != '\0' && g_cvars.symbol != 'p' && g_cvars.symbol != 'x' &&
+		g_cvars.symbol != '%' && g_cvars.symbol != 'X' && g_cvars.symbol != 'h' &&
+		g_cvars.symbol != 'l' && g_cvars.symbol != 0)
+	{
+		ft_putchar(g_cvars.symbol);
+		clean();
+		return;
+	}
+	if (g_cvars.symbol == 'd')
+		print_number( argptr);
+	if (g_cvars.symbol == 'o')
+		print_number_o(argptr);
+	if (g_cvars.symbol == 'u')
+		print_number_u(argptr);
+	if ((g_cvars.symbol == 'x' || g_cvars.symbol == 'X'))
+		print_number_x(argptr);
+	if (g_cvars.symbol == 'f')
+		print_number_f(argptr);
+	if (g_cvars.symbol == '%' && format[i])
+		ft_putchar('%');
+	if (g_cvars.symbol == 's' )
+		ft_putstr(va_arg( argptr, char * ));
+	if (g_cvars.symbol == 'c' )
+		ft_putchar((unsigned char)va_arg( argptr, int ));
+	clean();
+}
+
 
 
 
 int check_symbol(char format)
 {
-	if( format == 's' )
-	  g_cvars.symbol = 's';
-	else if( format == 'c' )
-	  g_cvars.symbol = 'c';
-	else if( format == 'd' || format == 'i')
-	    g_cvars.symbol = 'd';
-  	else if (format == 'u')
-		g_cvars.symbol = 'u';
-  	else if (format == 'o')
-		g_cvars.symbol = 'o';
-  	else if (format == 'p')
-		g_cvars.symbol = 'p';
-	else if (format == '%')
-		g_cvars.symbol = '%';
-	else if (format == 'f' || format == 'F')
-		g_cvars.symbol = 'f';
-	else if (format == 'x')
-		g_cvars.symbol = 'x';
-	else if (format == 'X')
-		g_cvars.symbol = 'X';
-	else if (format == 'b')
-		g_cvars.symbol = 'b';
-	else if (format == 'k')
-		g_cvars.symbol = 'k';
-	else if (format == 'g')
-		g_cvars.symbol = 'g';
-	else {
-		g_cvars.symbol = '\0';
+	if (format)
+		g_cvars.symbol = format;
+	else{
+		g_cvars.symbol = 0;
 		return (0);
 	}
 	return (1);
 }
-int print_symbol(char format, va_list argptr)
+/*int print_symbol(char format, va_list argptr)
 {
 	if( format == 's' )
 	  ft_putstr(va_arg( argptr, char * ));
@@ -242,7 +184,7 @@ int print_symbol(char format, va_list argptr)
 	else
 		return (0);
 	return (1);
-}
+}*/
 
 
 int ft_printf(const char *format, ...)
