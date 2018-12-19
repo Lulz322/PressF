@@ -8,8 +8,8 @@ int main(void)
     int fd;
     int fd1;
 
-    fd = ft_printf("%x\n", 2132142);
-    fd1 = printf("%x\n", 2132142);
+    fd = ft_printf("%#.10x\n", 2132142);
+    fd1 = printf("%#.10x\n", 2132142);
     printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 

@@ -148,7 +148,7 @@ void parsing(const char *format, va_list argptr)
 		print_number_o(argptr);
 	if (g_cvars.symbol == 'u')
 		print_number_u(argptr);
-	if (g_cvars.symbol == 'x' || g_cvars.symbol == 'X')
+	if ((g_cvars.symbol == 'x' || g_cvars.symbol == 'X'))
 		print_number_x(argptr);
 	if (g_cvars.symbol == 'f')
 		print_number_f(argptr);

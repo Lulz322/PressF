@@ -21,7 +21,12 @@ char *prntnum_lower(long long num, char sign , int base)
         outbuf[0] = sign;
         ++j;
     }
-
+	if (g_cvars.flag[4] == '#')
+	{
+		outbuf[j] = '0';
+		outbuf[j + 1] = 'x';
+		j += 2;
+	}
     while( ++i < 13){
         outbuf[j++] = outbuf[i];
     }

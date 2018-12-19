@@ -60,8 +60,8 @@ void print_number_x(va_list argptr) {
 	else
 		b = prntnum_upper(sign, ' ', 16);
 	if (ft_strcmp(g_cvars.length, "\0")) {
-		str_s = print_number_part_one_d(b, sign);
-		str_s = print_number_part_two_d(b, sign);
+		str_s = print_number_part_one_x(b, sign);
+		str_s = print_number_part_two_x(b, sign);
 	}
 	else {
 
@@ -77,8 +77,10 @@ void print_number_x(va_list argptr) {
 		if (g_cvars.flag[3] == '-')
 			if (ft_atoi(str_s) >= 0)
 				ft_putchar(' ');
-		if (g_cvars.flag[4] == '#')
-			ft_putchar(' ');
+		if (g_cvars.flag[4] == '#' && g_cvars.symbol == 'x')
+			ft_putstr("0x");
+		if (g_cvars.flag[4] == '#' && g_cvars.symbol == 'X')
+			ft_putstr("0X");
 		ft_putstr(str_s);
 	}
 

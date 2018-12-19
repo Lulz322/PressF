@@ -34,6 +34,11 @@ void prec(int sign, char *str)
 				ft_putchar('-');
 			if (g_cvars.flag[3] == '+' && sign != 1)
 				ft_putchar('+');
+			if (g_cvars.flag[4])
+				if (g_cvars.symbol == 'x')
+					ft_putstr("0x");
+				if (g_cvars.symbol == 'X')
+					ft_putstr("0X");
 			ft_putstr(str_w);
 		}
 	}
@@ -108,7 +113,7 @@ char *prec_helper(char *str, char *str_s)
 		j--;
 		while (str_s[z]) {
 			str[j] = str_s[z];
-			if (str[j] == '-')
+			if (str[j] == '-' || (g_cvars.flag[4] == '#' && g_cvars.symbol == 'x' && str[j] == 'x'))
 				str[j] = '0';
 			j--;
 			z--;
@@ -135,8 +140,6 @@ void width_helper(char *str, int sign)
 			ft_putstr(str);
 			return;
 		}
-			//if (g_cvars.flag[1] || g_cvars.flag[3])
-			//	g_cvars.width++;
 		while (j < g_cvars.width) {
 			if (g_cvars.flag[2] == '0')
 				str_w[j++] = '0';
@@ -173,7 +176,12 @@ void width_helper(char *str, int sign)
 				j++;
 			}
 		}
-
+		if (g_cvars.prec) {
+			if (g_cvars.symbol == 'x' && g_cvars.flag[4] == '#')
+				ft_putstr("0x");
+			if (g_cvars.symbol == 'X' && g_cvars.flag[4] == '#')
+				ft_putstr("0X");
+		}
 		ft_putstr(str_w);
 	}
 }
