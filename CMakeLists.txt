@@ -30,4 +30,4 @@ add_executable(printf
         srcs/hex.c
 
         Makefile
-        qwe.c srcs/prec.c srcs/print_number.c libft/ft_strcmp.c srcs/print_o.c srcs/print_x.c srcs/parser.c srcs/check.c)
+        qwe.c srcs/prec.c srcs/print_number.c libft/ft_strcmp.c srcs/print_o.c srcs/print_x.c srcs/parser.c srcs/check.c srcs/string.c)

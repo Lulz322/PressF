@@ -114,6 +114,8 @@ char *print_number_part_two_x(char *, int sign);
 char *print_number_part_one_x(char *, int sign);
 void print_number(va_list argptr);
 void print_number_h(char *str);
+void print_string(va_list argptr);
+void print_char(va_list argptr);
 void print_number_o(va_list argptr);
 void print_number_x(va_list argptr);
 void print_number_u(va_list argptr);
