@@ -52,19 +52,35 @@ void print_number_x(va_list argptr) {
 	unsigned int size;
 	char str[g_cvars.prec + g_cvars.width + 1];
 	char *str_s;
-	int sign;
+	unsigned int sign;
 
-	sign = 1;
 	sign = va_arg(argptr, unsigned int);
 	if (g_cvars.symbol == 'x')
 		b = prntnum_lower(sign, ' ', 16);
 	else
 		b = prntnum_upper(sign, ' ', 16);
-	if (g_cvars.length) {
-		str_s = print_number_part_one_x(b, 1);
-		str_s = print_number_part_two_x(b, 1);
+	if (ft_strcmp(g_cvars.length, "\0")) {
+		str_s = print_number_part_one_d(b, sign);
+		str_s = print_number_part_two_d(b, sign);
+	}
+	else {
+
+		str_s = prec_helper(str, b);
+		prec(sign, str_s);
 	}
 	if (g_cvars.width)
-		width_helper(str_s, 1);
+		width_helper(str_s, sign);
+	if (!g_cvars.width && !g_cvars.prec)
+	{
+		if (g_cvars.flag[1] == '+')
+			ft_putstr(" +");
+		if (g_cvars.flag[3] == '-')
+			if (ft_atoi(str_s) >= 0)
+				ft_putchar(' ');
+		if (g_cvars.flag[4] == '#')
+			ft_putchar(' ');
+		ft_putstr(str_s);
+	}
+
 	clean();
 }
