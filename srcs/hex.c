@@ -21,7 +21,7 @@ char *prntnum_lower(long long num, char sign , int base)
         outbuf[0] = sign;
         ++j;
     }
-	if (g_cvars.flag[4] == '#')
+	if (g_cvars.flag[4] == '#' && g_cvars.flag[1] != '+')
 	{
 		outbuf[j] = '0';
 		outbuf[j + 1] = 'x';
@@ -53,7 +53,12 @@ char * prntnum_upper(unsigned int num, char sign , int base)
         outbuf[0] = sign;
         ++j;
     }
-
+    if (g_cvars.flag[4] == '#')
+    {
+        outbuf[j] = '0';
+        outbuf[j + 1] = 'X';
+        j += 2;
+    }
     while( ++i < 13){
         outbuf[j++] = outbuf[i];
     }

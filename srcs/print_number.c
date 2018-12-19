@@ -70,10 +70,13 @@ void print_number(va_list argptr) {
 		str_s = print_number_part_two_d(b, sign);
 	}
 	else {
-
+		if (b < 0)
+			sign = -1;
 		str_s = prec_helper(str, ft_itoa(b));
 		prec(sign, str_s);
 	}
+	if (b < 0)
+		sign = -1;
 	if (g_cvars.width)
 		width_helper(str_s, sign);
 	if (!g_cvars.width && !g_cvars.prec)

@@ -72,15 +72,6 @@ void print_number_x(va_list argptr) {
 		width_helper(str_s, sign);
 	if (!g_cvars.width && !g_cvars.prec)
 	{
-		if (g_cvars.flag[1] == '+')
-			ft_putstr(" +");
-		if (g_cvars.flag[3] == '-')
-			if (ft_atoi(str_s) >= 0)
-				ft_putchar(' ');
-		if (g_cvars.flag[4] == '#' && g_cvars.symbol == 'x')
-			ft_putstr("0x");
-		if (g_cvars.flag[4] == '#' && g_cvars.symbol == 'X')
-			ft_putstr("0X");
 		ft_putstr(str_s);
 	}
 

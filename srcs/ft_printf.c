@@ -159,7 +159,7 @@ void parsing(const char *format, va_list argptr)
 	if (g_cvars.symbol == 'c' )
 		ft_putchar((unsigned char)va_arg( argptr, int ));
 
-
+	clean();
 
 
 }
