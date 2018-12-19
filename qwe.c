@@ -8,8 +8,8 @@ int main(void)
     int fd;
     int fd1;
 
-    fd = ft_printf("%lhlz");
-   // fd1 = printf("%lhl");
+    fd = ft_printf("%-+.10d\n", 213432);
+    fd1 = printf("%-+.10d\n", 213432);
     printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 

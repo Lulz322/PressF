@@ -13,14 +13,12 @@ char *print_number_part_two_x(char *b, int sign)
 		str_s = b;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	else if (g_cvars.length == "l") {
 		str_s = b;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	return str_s;
@@ -34,14 +32,12 @@ char *print_number_part_one_x(char *b, int sign)
 		str_s = b;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	if (g_cvars.length == "hh") {
 		str_s = b;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	return str_s;
@@ -66,7 +62,6 @@ void print_number_x(va_list argptr) {
 	else {
 
 		str_s = prec_helper(str, b);
-		prec(sign, str_s);
 	}
 	if (g_cvars.width)
 		width_helper(str_s, sign);

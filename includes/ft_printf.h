@@ -31,15 +31,31 @@ int i;
 
 typedef struct s_cvars{
 	char dot;
-	char flag[5];
+	char flag[5]; // 0 | ' '     1 | +    2 | 0     3 | -  4| #
 	char symbol;
 	int width;
 	char *length;
 	int prec;
 } t_cvars;
 
-// 0 | ' '     1 | +    2 | 0     3 | -  4| #
+
 t_cvars g_cvars;
+
+enum	e_bool
+{
+	false = 0,
+	true
+};
+
+# define _BOOL	typedef enum e_bool	bool
+
+
+# define _ERR_MSG(msg) ft_putendl(msg)
+# define _ERR_NOTIS(ex) if (!(ex)) return (false)
+# define _ERR_NOTIS_MSG(ex) if (!(ex)) { _ERR_MSG("error"); return (false); }
+# define _ERR_NOTIS_O(ex, out) if (!(ex)) return (out)
+
+_BOOL;
 
 
 /*
@@ -86,9 +102,8 @@ void check_cvars(const char *format, va_list argptr);
 void check_width(const char *format, va_list argptr);
 void check_prec(const char *format);
 int check_length(const char *format);
-void prec(int sign, char *str);
-void width_helper(char *str, int sign);
-char * prec_helper(char *str, char *str_s);
+char *width_helper(char *str, int sign);
+char *prec_helper(char *str, char *str_s);
 void clean(void);
 
 char *print_number_part_two_d(long long int b, int sign);

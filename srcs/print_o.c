@@ -15,7 +15,6 @@ char *print_number_part_two_o(long long b, int sign)
 			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	else if (g_cvars.length == "l") {
@@ -24,7 +23,6 @@ char *print_number_part_two_o(long long b, int sign)
 			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	return str_s;
@@ -40,7 +38,6 @@ char *print_number_part_one_o(long long b, int sign)
 			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	if (g_cvars.length == "hh") {
@@ -49,7 +46,6 @@ char *print_number_part_one_o(long long b, int sign)
 			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	return str_s;
@@ -71,7 +67,6 @@ void print_number_o(va_list argptr) {
 	else {
 
 		str_s = prec_helper(str, ft_itoa(b));
-		prec(sign, str_s);
 	}
 	if (g_cvars.width)
 		width_helper(str_s, sign);
@@ -107,7 +102,6 @@ void print_number_u(va_list argptr) {
 	else {
 
 		str_s = prec_helper(str, ft_itoa(b));
-		prec(sign, str_s);
 	}
 	if (g_cvars.width)
 		width_helper(str_s, sign);

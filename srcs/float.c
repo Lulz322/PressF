@@ -134,3 +134,41 @@ void print_number_f(va_list argptr) {
 	}
 	clean();
 }
+
+void prec_f(int sign, char *str)
+{
+	int j;
+	int z;
+	char str_w[g_cvars.prec + 1];
+
+	j = 0;
+	z = 1;
+	if (g_cvars.prec)
+	{
+		while(str[j] != '.')
+			j++;
+		while(z <= g_cvars.prec)
+		{
+			if (!(ft_isdigit(str[z + j])))
+				str[z + j] = '0';
+			z++;
+		}
+		str[z + j] = '\0';
+		if (sign == -1)
+			str_w[j + 1] = '-';
+		if (!(g_cvars.width))
+			ft_putstr(str_w);
+	}
+	if (!g_cvars.prec && g_cvars.dot == '.') {
+		while (str[j] != '.')
+			j++;
+		str[j] = '\0';
+	}
+	if (g_cvars.flag == '+')
+		ft_putchar('+');
+	if (g_cvars.flag == '-')
+		if(ft_atoi(str) >= 0)
+			ft_putchar(' ');
+		else
+			ft_putchar('-');
+}

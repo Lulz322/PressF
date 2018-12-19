@@ -15,7 +15,6 @@ char *print_number_part_two_d(long long  b, int sign)
 			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	else if (!(ft_strcmp(g_cvars.length, "l"))) {
@@ -24,7 +23,6 @@ char *print_number_part_two_d(long long  b, int sign)
 			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
 	}
 	return str_s;
@@ -40,8 +38,8 @@ char *print_number_part_one_d(long long b, int sign)
 			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
+		return str_s;
 	}
 	if (!(ft_strcmp(g_cvars.length, "hh"))) {
 		str_s = ft_itoa((signed char)b);
@@ -49,13 +47,44 @@ char *print_number_part_one_d(long long b, int sign)
 			sign = -1;
 		if (g_cvars.prec) {
 			str_s = prec_helper(str,str_s);
-			prec(sign, str_s);
 		}
+		return str_s;
 	}
 	return str_s;
 }
 
+void print_number_h(char *str)
+{
+	int i;
+	int counter;
 
+	i = 0;
+	counter = 0;
+	if ((ft_atoi(str) > 0 && g_cvars.flag[1] == '+'))
+	{
+		if (g_cvars.prec > g_cvars.width)
+			ft_putstr("+");
+		while (str[i++] == ' ');
+		str[i - 2] = '+';
+	}
+	if (g_cvars.flag[3] == '-')
+	{
+		i  = 0;
+		if (g_cvars.prec > g_cvars.width)
+		{
+			ft_putstr(str);
+			return ;
+		}
+		while (str[++i] == ' ');
+		if (ft_atoi(str) < 0)
+			i--;
+		while (str[i])
+			ft_putchar(str[i++]);
+		while (i-- > 0)
+			if (str[i] == ' ')
+				ft_putchar(str[i]);
+	}
+}
 void print_number(va_list argptr) {
 	long long int b;
 	char *str_s;
@@ -64,67 +93,22 @@ void print_number(va_list argptr) {
 
 	sign = 1;
 	b = va_arg(argptr, int);
-
 	if (ft_strcmp(g_cvars.length, "\0")) {
 		str_s = print_number_part_one_d(b, sign);
 		str_s = print_number_part_two_d(b, sign);
 	}
 	else {
+		str_s = ft_itoa(b);
 		if (b < 0)
 			sign = -1;
-		str_s = prec_helper(str, ft_itoa(b));
-		prec(sign, str_s);
+		if (g_cvars.prec)
+			str_s = prec_helper(str, str_s);
 	}
-	if (b < 0)
-		sign = -1;
 	if (g_cvars.width)
-		width_helper(str_s, sign);
-	if (!g_cvars.width && !g_cvars.prec)
-	{
-		if (g_cvars.flag[1] == '+')
-			ft_putstr(" +");
-		if (g_cvars.flag[3] == '-')
-			if (ft_atoi(str_s) >= 0)
-				ft_putchar(' ');
-		if (g_cvars.flag[4] == '#')
-			ft_putchar(' ');
-		ft_putstr(str_s);
-	}
+		str_s = width_helper(str_s, sign);
+	print_number_h(str_s);
+	if (g_cvars.flag[3] != '-')
+	    ft_putstr(str_s);
 	clean();
 }
 
-void print_procent(void)
-{
-	long long int b;
-	char *str_s;
-	char str[g_cvars.prec + g_cvars.width + 1];
-	int sign;
-
-	sign = 1;
-	b = 2;
-
-	if (ft_strcmp(g_cvars.length, "\0")) {
-		str_s = print_number_part_one_d(b, sign);
-		str_s = print_number_part_two_d(b, sign);
-	}
-	else {
-
-		str_s = prec_helper(str, ft_itoa(b));
-		prec(sign, str_s);
-	}
-	if (g_cvars.width)
-		width_helper(str_s, sign);
-	if (!g_cvars.width && !g_cvars.prec)
-	{
-		if (g_cvars.flag[1] == '+')
-			ft_putstr(" +");
-		if (g_cvars.flag[3] == '-')
-			if (ft_atoi(str_s) >= 0)
-				ft_putchar(' ');
-		if (g_cvars.flag[4] == '#')
-			ft_putchar(' ');
-		ft_putstr("%");
-	}
-
-	clean();
-}
