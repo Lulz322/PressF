@@ -8,8 +8,8 @@ int main(void)
     int fd;
     int fd1;
 
-    fd = ft_printf("%o %o %o %o %o\n", 999988888,  1, 100, 999, 42);
-    fd1 = printf("%o %o %o %o %o\n", 999988888, 1, 100, 999, 42);
+    fd = ft_printf("%c\n", 0);
+    fd1 = printf("%c\n", 0);
     printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 

@@ -31,7 +31,7 @@ void print_char(va_list argptr) {
 	unsigned int sign;
 
 	str_s = (char *)malloc(sizeof(char) * 2);
-	str_s[0] = (unsigned int)va_arg(argptr, int);
+	str_s[0] = (unsigned int)va_arg(argptr, unsigned int);
 	str_s[1] = '\0';
 	if (g_cvars.prec)
 		str_s = prec_helper(str, str_s);
