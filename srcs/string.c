@@ -29,7 +29,7 @@ void print_char(va_list argptr) {
 	char str[g_cvars.prec + g_cvars.width + 1];
 	char *str_s;
 	unsigned int sign;
-
+	//char 0
 	str_s = (char *)malloc(sizeof(char) * 2);
 	str_s[0] = (unsigned int)va_arg(argptr, unsigned int);
 	str_s[1] = '\0';
