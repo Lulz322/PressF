@@ -30,7 +30,7 @@ int		len(long long int nb)
     return (len);
 }
 
-char	*ft_itoa(int nb)
+char	*ft_itoa(long long nb)
 {
     char *str;
     long long	int n;

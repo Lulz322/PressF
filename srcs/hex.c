@@ -98,9 +98,9 @@ void print_address_hex(void* p0) {
 
 }
 
-int convertDecimalToOctal(unsigned int  decimalNumber)
+long long int convertDecimalToOctal(unsigned long long int  decimalNumber)
 {
-    int octalNumber = 0, i = 1;
+    long long int octalNumber = 0, i = 1;
 
     while (decimalNumber != 0)
     {

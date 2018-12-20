@@ -10,8 +10,9 @@ void print_string(va_list argptr) {
 	unsigned int sign;
 
 
-	str_s = va_arg(argptr, char *);
-
+	str_s = (va_arg(argptr, char *));
+	if (str_s == NULL)
+		return ;
 	if (g_cvars.prec)
 			str_s = prec_helper(str, str_s);
 	if (g_cvars.width)

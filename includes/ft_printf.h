@@ -51,7 +51,7 @@ enum	e_bool
 
 
 # define _ERR_MSG(msg) ft_putendl(msg)
-# define _ERR_NOTIS(ex) if (!(ex)) return (false)
+# define _ERR_NOTIS(ex) if (!(ex)) return ;
 # define _ERR_NOTIS_MSG(ex) if (!(ex)) { _ERR_MSG("error"); return (false); }
 # define _ERR_NOTIS_O(ex, out) if (!(ex)) return (out)
 
@@ -100,7 +100,7 @@ void parsing(const char *format, va_list argptr);
 t_cvars check_flags(const char *format, va_list argptr);
 void check_cvars(const char *format, va_list argptr);
 void check_width(const char *format, va_list argptr);
-void check_prec(const char *format);
+void check_prec(const char *format, va_list argptr);
 int check_length(const char *format);
 char *width_helper(char *str, int sign);
 char *prec_helper(char *str, char *str_s);
@@ -130,7 +130,7 @@ char *                   prntnum_upper(unsigned int num, char sign , int base);
 void                    print_address_hex(void* p0);
 
 char *                   MyFloat(double fVal);
-int convertDecimalToOctal(unsigned int  decimalNumber);
+long long int convertDecimalToOctal(unsigned long long int  decimalNumber);
 char * MyGFloat(double f);
 void byte_to_binary(int x);
 void prec_f(int sign, char *str);

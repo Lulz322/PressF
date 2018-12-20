@@ -34,9 +34,8 @@ void check_width(const char *format, va_list argptr)
 	g_cvars.width = ft_atoi(str);
 }
 
-void check_prec(const char *format)
+void check_prec(const char *format, va_list argptr)
 {
-	i++;
 	char *str;
 	*str = '\0';
 	int j;
@@ -83,7 +82,7 @@ int check_length(const char *format)
 
 void check_cvars(const char *format, va_list argptr)
 {
-	if (format[i - 1] == '%' && (format[i] == ' ' && format[i + 1] == '\0' ||
+	if (format[i - 1] == '%' && ((format[i] == ' ' && format[i + 1] == '\0') ||
 	format[i] == '\0')) {
 		++i;
 		return;
@@ -94,10 +93,12 @@ void check_cvars(const char *format, va_list argptr)
 		g_cvars.dot = '.';
 	if (g_cvars.dot == '.') {
 		while(format[i++] <= '0' && format[i] >= '9');
-		check_prec(format);
+		check_prec(format, argptr);
 	}
 	check_length(format);
-	while (format[i] && (!(ft_isalpha(format[i++]))));
+	while ((format[i] && ((!format[i] == '%') || (!(ft_isalpha(format[i++]))))))
+		if(format[i - 1] == '%')
+			break;
 	check_symbol(format[--i]);
 
 }

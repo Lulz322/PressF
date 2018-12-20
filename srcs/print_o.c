@@ -43,7 +43,7 @@ char *print_number_part_one_o(long long b, int sign)
 	return str_s;
 }
 void print_number_o(va_list argptr) {
-	unsigned int  b;
+	unsigned long long int  b;
 	char str[g_cvars.prec + g_cvars.width + 1];
 	char *str_s;
 	int sign;
