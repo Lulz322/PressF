@@ -83,14 +83,23 @@ int check_length(const char *format)
 
 void check_cvars(const char *format, va_list argptr)
 {
+	if (format[i - 1] == '%' && (format[i] == ' ' && format[i + 1] == '\0' ||
+	format[i] == '\0')) {
+		++i;
+		return;
+	}
 	check_flags(format, argptr);
 	check_width(format, argptr);
-	if (format[i] == '.') {
+	if (format[i] == '.')
 		g_cvars.dot = '.';
+	if (g_cvars.dot == '.') {
+		while(format[i++] <= '0' && format[i] >= '9');
 		check_prec(format);
 	}
 	check_length(format);
-	check_symbol(format[i]);
+	while (format[i] && (!(ft_isalpha(format[i++]))));
+	check_symbol(format[--i]);
+
 }
 
 

@@ -38,7 +38,7 @@ int ft_printf(const char *format, ...)
 	va_list argptr;
 	symbols = 0;
 
-    va_start( argptr, format );
+    va_start (argptr, format );
 	i = 0;
     while(format[i]) {
 	if (format[i] == '%') {
@@ -46,7 +46,8 @@ int ft_printf(const char *format, ...)
 	}
 	else
 		ft_putchar(format[i]);
-    i++;
+	if (format[i])
+        i++;
     }
     va_end( argptr );
     clean();

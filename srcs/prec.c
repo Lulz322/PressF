@@ -58,6 +58,9 @@ char *width_helper(char *str, int sign)
 	if (((g_cvars.prec > g_cvars.width ) && ft_atoi(str) < 0 ))
 		g_cvars.width--;
 	while (j < g_cvars.width ) {
+		if (!g_cvars.prec && g_cvars.flag[2] == '0' && g_cvars.flag[3] != '-')
+			str_w[j++] = '0';
+		else
 			str_w[j++] = ' ';
 	}
 	str_w[j] = '\0';

@@ -104,7 +104,7 @@ void check_prec(const char *format);
 int check_length(const char *format);
 char *width_helper(char *str, int sign);
 char *prec_helper(char *str, char *str_s);
-void clean(void);
+void clean();
 
 char *print_number_part_two_d(long long int b);
 char *print_number_part_one_d(long long int b);

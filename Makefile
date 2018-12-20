@@ -31,6 +31,9 @@ SOURCES = ft_printf.c \
 			print_number.c \
 			print_o.c \
 			print_x.c \
+			string.c \
+			check.c \
+			parser.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

@@ -24,7 +24,8 @@ void parsing(const char *format, va_list argptr)
 	check_cvars(format, argptr);
 	if (g_cvars.symbol == 0)
 	{
-		--i;
+		if (format[i] != '\0')
+			--i;
 		return;
 	}
 	if (g_cvars.symbol != 'd' && g_cvars.symbol != 's' && g_cvars.symbol != 'o' &&
@@ -34,11 +35,12 @@ void parsing(const char *format, va_list argptr)
 	    g_cvars.symbol != 'l' && g_cvars.symbol != 0 && g_cvars.symbol != 'f')
 	{
 		ft_putchar(g_cvars.symbol);
+
 		clean();
 		return;
 	}
-	if (g_cvars.symbol == 'd')
-		print_number( argptr);
+	if (g_cvars.symbol == 'd' || g_cvars.symbol == 'i')
+		print_number(argptr);
 	if (g_cvars.symbol == 'o')
 		print_number_o(argptr);
 	if (g_cvars.symbol == 'u')

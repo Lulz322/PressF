@@ -44,7 +44,6 @@ char *print_number_part_one_o(long long b, int sign)
 }
 void print_number_o(va_list argptr) {
 	unsigned int  b;
-	unsigned int size;
 	char str[g_cvars.prec + g_cvars.width + 1];
 	char *str_s;
 	int sign;

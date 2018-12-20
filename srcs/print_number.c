@@ -78,20 +78,20 @@ void print_number_h(char *str)
 	}
 }
 void print_number(va_list argptr) {
-	long long int b;
+	long long int number;
 	char *str_s;
 	char str[g_cvars.prec + g_cvars.width + 1];
 	int sign;
 
 	sign = 1;
-	b = va_arg(argptr, int);
+	number = va_arg(argptr, int);
 	if (ft_strcmp(g_cvars.length, "\0")) {
-		str_s = print_number_part_one_d(b);
-		str_s = print_number_part_two_d(b);
+		str_s = print_number_part_one_d(number);
+		str_s = print_number_part_two_d(number);
 	}
 	else {
-		str_s = ft_itoa(b);
-		if (b < 0)
+		str_s = ft_itoa(number);
+		if (number < 0)
 			sign = -1;
 		if (g_cvars.prec)
 			str_s = prec_helper(str, str_s);
@@ -101,6 +101,7 @@ void print_number(va_list argptr) {
 	print_number_h(str_s);
 	if (g_cvars.flag[3] != '-')
 	    ft_putstr(str_s);
+	free(str_s);
 	clean();
 }
 
