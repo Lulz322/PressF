@@ -84,7 +84,7 @@ void print_number(va_list argptr) {
 	int sign;
 
 	sign = 1;
-	number = va_arg(argptr, int);
+	number = va_arg(argptr, long long);
 	if (ft_strcmp(g_cvars.length, "\0")) {
 		str_s = print_number_part_one_d(number);
 		str_s = print_number_part_two_d(number);

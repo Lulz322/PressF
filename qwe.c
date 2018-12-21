@@ -9,8 +9,8 @@ int main(void)
     int fd1;
     unsigned long l;
 
-    fd = ft_printf("%zs\n", "123");
-    fd1 = printf("%zs\n", "123");
+    fd = ft_printf("%lld\n", -9223372036854775808);
+    fd1 = printf("%lld\n", -9223372036854775808);
     printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 
