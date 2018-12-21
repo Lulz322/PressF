@@ -36,10 +36,9 @@
 int ft_printf(const char *format, ...)
 {
 	va_list argptr;
+	va_list test;
 	symbols = 0;
 	i = 0;
-	if (!format)
-		return (-1);
     va_start (argptr, format );
     while(format[i]) {
 	if (format[i] == '%') {

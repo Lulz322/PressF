@@ -120,14 +120,15 @@ void print_number_o(va_list argptr);
 void print_number_x(va_list argptr);
 void print_number_u(va_list argptr);
 void print_number_f(va_list argptr);
-void print_procent();
+void print_number_p(va_list argptr);
+void print_percent(va_list argptr);
 /*
 ** -------------------------- Numbers Functions --------------------------------
 */
 
 char *                 prntnum_lower(long long num, char sign , int base);
 char *                   prntnum_upper(unsigned int num, char sign , int base);
-void                    print_address_hex(void* p0);
+char *                    print_address_hex(void* p0);
 
 char *                   MyFloat(double fVal);
 long long int convertDecimalToOctal(unsigned long long int  decimalNumber);

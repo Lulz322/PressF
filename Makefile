@@ -6,7 +6,7 @@
 #    By: bsouchet <bsouchet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/03 22:30:54 by bsouchet          #+#    #+#              #
-#    Updated: 2018/12/10 14:49:53 by iruban           ###   ########.fr        #
+#    Updated: 2018/12/21 15:47:53 by iruban           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SOURCES = ft_printf.c \
 			string.c \
 			check.c \
 			parser.c \
+			adress.c 
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

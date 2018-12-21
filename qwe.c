@@ -4,12 +4,13 @@
 
 int main(void)
 {
-    char *qwe = NULL;
+    char *qwe = "qeqwe";
     int fd;
     int fd1;
+    unsigned long l;
 
-    fd = ft_printf("%c\n", 0);
-    fd1 = printf("%c\n", 0);
+    fd = ft_printf("%s\n", "this is a string");
+    fd1 = printf("%s\n", "this is a string");
     printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 

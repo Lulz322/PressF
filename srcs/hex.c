@@ -75,27 +75,29 @@ char hex_digit(int v) {
         return 'a' + v - 10;
 }
 
-void print_address_hex(void* p0) {
+char *print_address_hex(void* p0) {
     int i;
     int counter;
     counter = 1;
     uintptr_t p = (uintptr_t)p0;
+    char *str;
 
-    ft_putchar('0');
-    ft_putchar('x');
+	str = (char *)malloc(sizeof(char) * 255);
 
+	str[0] = '0';
+	str[1] = 'x';
     i = (sizeof(p) << 3) - 4;
     while (i >= 0)
     {
         if (counter == 1) {
             while (hex_digit((p >> i) & 0xf) == '0')
                 i -= 4;
-            counter = 0;
+            counter = 2;
         }
-        ft_putchar(hex_digit((p >> i) & 0xf));
+        str[counter++] = hex_digit((p >> i) & 0xf);
         i -= 4;
     }
-
+    return (str);
 }
 
 long long int convertDecimalToOctal(unsigned long long int  decimalNumber)

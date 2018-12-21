@@ -28,18 +28,21 @@ void parsing(const char *format, va_list argptr)
 			--i;
 		return;
 	}
+
 	if (g_cvars.symbol != 'd' && g_cvars.symbol != 's' && g_cvars.symbol != 'o' &&
 	    g_cvars.symbol != 'u' && g_cvars.symbol != 'i' && g_cvars.symbol != 'c' &&
 	    g_cvars.symbol != '\0' && g_cvars.symbol != 'p' && g_cvars.symbol != 'x' &&
-	    g_cvars.symbol != '%' && g_cvars.symbol != 'X' && g_cvars.symbol != 'h' &&
-	    g_cvars.symbol != 'l' && g_cvars.symbol != 0 && g_cvars.symbol != 'f')
+	    g_cvars.symbol != '%' && g_cvars.symbol != 'X' &&
+	    g_cvars.symbol != 0 && g_cvars.symbol != 'f')
+
 	{
 		ft_putchar(g_cvars.symbol);
 
 		clean();
 		return;
 	}
-	if (g_cvars.symbol == 'd' || g_cvars.symbol == 'i')
+	if (g_cvars.symbol == 'd' || g_cvars.symbol == 'i' ||
+	g_cvars.symbol == 'D' || g_cvars.symbol == 'I')
 		print_number(argptr);
 	if (g_cvars.symbol == 'o')
 		print_number_o(argptr);
@@ -50,10 +53,12 @@ void parsing(const char *format, va_list argptr)
 	if (g_cvars.symbol == 'f')
 		print_number_f(argptr);
 	if (g_cvars.symbol == '%' && format[i])
-		ft_putchar('%');
-	if (g_cvars.symbol == 's' )
+		print_percent(argptr);
+	if (g_cvars.symbol == 's')
 		print_string(argptr);
-	if (g_cvars.symbol == 'c' )
+	if (g_cvars.symbol == 'c')
 		print_char(argptr);
+	if (g_cvars.symbol == 'p')
+		print_number_p(argptr);
 	clean();
 }

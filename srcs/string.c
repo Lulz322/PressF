@@ -7,16 +7,23 @@
 void print_string(va_list argptr) {
 	char str[g_cvars.prec + g_cvars.width + 1];
 	char *str_s;
-	unsigned int sign;
+	int i;
 
-
-	str_s = (va_arg(argptr, char *));
+	i = 0;
+	str_s = va_arg(argptr, char *);
 	if (str_s == NULL)
-		return ;
-	if (g_cvars.prec)
+		str_s = "(null)";
+	if (g_cvars.prec) {
+		if (g_cvars.prec > ft_strlen(str_s))
 			str_s = prec_helper(str, str_s);
+		else {
+			while (i < g_cvars.prec)
+				ft_putchar(str_s[i++]);
+			return;
+		}
+	}
 	if (g_cvars.width)
-		str_s = width_helper(str_s, sign);
+		str_s = width_helper(str_s, 1);
 	print_number_h(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
