@@ -9,8 +9,8 @@ int main(void)
     int fd1;
     unsigned long l;
 
-    fd = ft_printf("%s\n", "this is a string");
-    fd1 = printf("%s\n", "this is a string");
+    fd = ft_printf("%zs\n", "123");
+    fd1 = printf("%zs\n", "123");
     printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 

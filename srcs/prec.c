@@ -25,7 +25,7 @@ char *prec_helper(char *str, char *str_s)
 		if (ft_atoi(str_s) < 0)
 			g_cvars.prec++;
 		str = (char *) malloc(sizeof(char) * g_cvars.prec + 1);
-		while (j < g_cvars.prec)
+		while (j < g_cvars.prec && str_s[0])
 			str[j++] = '0';
 	}
 	str[j] = '\0';
