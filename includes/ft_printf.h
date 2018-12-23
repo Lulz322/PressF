@@ -36,6 +36,7 @@ typedef struct s_cvars{
 	int width;
 	char *length;
 	int prec;
+	int color;
 } t_cvars;
 
 

@@ -22,8 +22,6 @@ add_executable(printf_test
         libft/ft_strncat.c
         libft/ft_strnew.c
         libft/ft_swap.c
-        libft/ft_strdel.c
-        libft/ft_isalpha.c
         libft/Makefile
         srcs/check.c
         srcs/float.c
@@ -37,4 +35,4 @@ add_executable(printf_test
         srcs/string.c
         author
         Makefile
-        qwe.c srcs/adress.c)
+        qwe.c )
