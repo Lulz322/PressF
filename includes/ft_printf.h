@@ -72,7 +72,7 @@ _BOOL;
 ** -------------------------- Colors Definition --------------------------------
 */
 
-# define PF_RED			"\033[31m"
+# define PF_RED	        "\033[31m"
 # define PF_GREEN		"\033[32m"
 # define PF_YELLOW		"\033[33m"
 # define PF_BLUE		"\033[34m"
