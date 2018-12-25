@@ -4,12 +4,17 @@
 
 #include "../includes/ft_printf.h"
 
-char *prntnum_lower(long long num, char sign , int base)
+char *prntnum_lower(uintmax_t num, char sign , uintmax_t base)
 {
-    int i = 12;
+    int i;
     int j = 0;
     char *outbuf;
 
+	if (ft_strcmp(g_cvars.length, "ll") == 0 || ft_strcmp(g_cvars.length, "l") == 0 ||
+	ft_strcmp(g_cvars.length, "j") == 0)
+		i = 16;
+	else
+		i = 12;
     outbuf = ft_strnew(sizeof(char) * 255);
     do{
         outbuf[i] = "0123456789abcdef"[num % base];
@@ -21,27 +26,30 @@ char *prntnum_lower(long long num, char sign , int base)
         outbuf[0] = sign;
         ++j;
     }
-	if (g_cvars.flag[4] == '#' && g_cvars.flag[1] != '+')
-	{
-		outbuf[j] = '0';
-		outbuf[j + 1] = 'x';
-		j += 2;
-	}
-    while( ++i < 13){
-        outbuf[j++] = outbuf[i];
+    while( ++i < 17){
+            outbuf[j++] = outbuf[i];
     }
 
     outbuf[j] = 0;
+	if (g_cvars.dot == '.' && g_cvars.prec == 0)
+		outbuf = "\0";
     return (outbuf);
 
 }
 
-char * prntnum_upper(unsigned int num, char sign , int base)
+char * prntnum_upper(long long num, char sign , int base)
 {
 
     int i = 12;
     int j = 0;
     char *outbuf;
+
+
+	if ((ft_strcmp(g_cvars.length, "ll") == 0 || ft_strcmp(g_cvars.length, "l") == 0 ||
+	    ft_strcmp(g_cvars.length, "j") == 0) && num != 4294967296)
+		i = 16;
+	else
+		i = 12;
     outbuf = ft_strnew(sizeof(char) * 255);
     do{
         outbuf[i] = "0123456789ABCDEF"[num % base];
@@ -52,12 +60,6 @@ char * prntnum_upper(unsigned int num, char sign , int base)
     if(sign != ' '){
         outbuf[0] = sign;
         ++j;
-    }
-    if (g_cvars.flag[4] == '#')
-    {
-        outbuf[j] = '0';
-        outbuf[j + 1] = 'X';
-        j += 2;
     }
     while( ++i < 13){
         outbuf[j++] = outbuf[i];

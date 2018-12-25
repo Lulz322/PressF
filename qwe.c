@@ -9,10 +9,12 @@ int main(void)
     int fd1;
     unsigned long l;
 
-    fd = ft_printf("%.10d)\n", 124214);
-    fd1 = printf("%.10d)\n", 124214);
+    fd =  ft_printf("@moulitest: %.d %.0d", 42, 43);
+    printf("\n");
+    fd1 = printf("@moulitest: %.d %.0d", 42, 43);
+    printf("\n");
     ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)", fd, fd1);
-  //  printf("MINE : %d | YOUR  :  %d", fd, fd1);
+     //printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 
     return (0);

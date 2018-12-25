@@ -73,6 +73,13 @@ int check_length(const char *format)
 		i++;
 		return (1);
 	}
+	else if (format[i] == 'j')
+	{
+		g_cvars.length = "j";
+		i++;
+		return (1);
+	}
+
 	else {
 		g_cvars.length = "\0";
 		return (0);
@@ -97,8 +104,12 @@ void check_cvars(const char *format, va_list argptr)
 	if (g_cvars.dot == '.')
 		check_prec(format, argptr);
 	check_length(format);
-	while ((format[i] && ((!format[i] == '%') || (!(ft_isalpha(format[i++]))))));
-	check_symbol(format[--i]);
+	while ((format[i] && ((format[i] != '%' && format[i] != 'x'
+	&& format[i] != 'd' && format[i] != 'o' && format[i] != 'i'
+	&& format[i] != 'f' && format[i] != 'b' && format[i] != 'X'
+	&& format[i] != 'u' && format[i] != 's' && format[i] != 'c'))))
+		i++;
+	check_symbol(format[i]);
 
 }
 

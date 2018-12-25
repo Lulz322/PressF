@@ -25,6 +25,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <locale.h>
+#include <inttypes.h>
 
 unsigned int symbols;
 int i;
@@ -111,10 +112,11 @@ char *print_number_part_two_d(long long int b);
 char *print_number_part_one_d(long long int b);
 char *print_number_part_two_o(long long b, int sign);
 char *print_number_part_one_o(long long b, int sign);
-char *print_number_part_two_x(char *, int sign);
-char *print_number_part_one_x(char *, int sign);
+char *print_number_part_two_x(unsigned long long, char *);
+char *print_number_part_one_x(unsigned long long, char *);
 void print_number(va_list argptr);
 void print_number_h(char *str);
+void print_x_h(char *str);
 void print_string(va_list argptr);
 void print_char(va_list argptr);
 void print_number_o(va_list argptr);
@@ -127,8 +129,8 @@ void print_percent(va_list argptr);
 ** -------------------------- Numbers Functions --------------------------------
 */
 
-char *                 prntnum_lower(long long num, char sign , int base);
-char *                   prntnum_upper(unsigned int num, char sign , int base);
+char *                 prntnum_lower(uintmax_t num, char sign , uintmax_t base);
+char *                   prntnum_upper(long long num, char sign , int base);
 char *                    print_address_hex(void* p0);
 
 char *                   MyFloat(double fVal);

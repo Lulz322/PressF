@@ -22,11 +22,13 @@ add_executable(printf_test
         libft/ft_strncat.c
         libft/ft_strnew.c
         libft/ft_swap.c
+        libft/ft_isalpha.c
         libft/Makefile
         srcs/check.c
         srcs/float.c
         srcs/ft_printf.c
         srcs/hex.c
+        srcs/adress.c
         srcs/parser.c
         srcs/prec.c
         srcs/print_number.c
