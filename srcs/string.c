@@ -7,19 +7,22 @@
 void print_string(va_list argptr) {
 	char str[g_cvars.prec + g_cvars.width + 1];
 	char *str_s;
+	char *tmp;
 	int i;
 
 	i = 0;
-	str_s = va_arg(argptr, char *);
-	if (str_s == NULL)
+	tmp = va_arg(argptr, char *);
+	if (tmp == NULL)
 		str_s = "(null)";
+	else {
+		str_s = ft_strdup(tmp);
+		str_s[ft_strlen(tmp)] = '\0';
+	}
 	if (g_cvars.prec) {
 		if (g_cvars.prec > ft_strlen(str_s))
 			str_s = prec_helper(str, str_s);
 		else {
-			while (i < g_cvars.prec)
-				ft_putchar(str_s[i++]);
-			return;
+			str_s[g_cvars.prec] = '\0';
 		}
 	}
 	if (g_cvars.width)
