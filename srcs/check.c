@@ -79,6 +79,16 @@ int check_length(const char *format)
 		i++;
 		return (1);
 	}
+	else if (format[i] == 'z') {
+		g_cvars.length = "z";
+		i++;
+		return (1);
+	}
+	else if (format[i] == 't') {
+		g_cvars.length = "t";
+		i++;
+		return (1);
+	}
 
 	else {
 		g_cvars.length = "\0";
