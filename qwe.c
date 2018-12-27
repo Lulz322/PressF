@@ -13,7 +13,7 @@ int main(void)
     printf("\n");
     fd1 = printf("%llu\n", -123456);
     printf("\n");
-    ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)", fd, fd1);
+    ft_printf("MYLW(MINE) :MXUI( MCYN(%d) | MRED(YOUR)  :  MBLU(%d)", fd, fd1);
      //printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 

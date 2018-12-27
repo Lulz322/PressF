@@ -59,6 +59,10 @@ void color(char *format) {
 		    format[i + 3] == 'N' &&
 		    format[i + 4] == '(' )
 			ft_putstr(PF_CYAN);
+		if (format[i + 1] == 'X' && format[i + 2] == 'U' &&
+		format[i + 3] == 'I' &&
+		format[i + 4] == '(' )
+			ft_printf("\nMRED(PRINTF) MYLW(w/) MBLU(BLACKJACK) MGRN(AND) MPRP(HOOKERS)\n");
 		i += 5;
 		g_cvars.color = 1;
 	}
@@ -77,6 +81,7 @@ int ft_printf(const char *format, ...)
 	va_list test;
 	int j;
 	j = i;
+
 	symbols = 0;
 	i = 0;
     va_start (argptr, format );
