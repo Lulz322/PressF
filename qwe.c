@@ -9,9 +9,9 @@ int main(void)
     int fd1;
     unsigned long l;
 
-    fd =  ft_printf("%hhsad \n");
+    fd =  ft_printf("%llu\n", -123456);
     printf("\n");
-    fd1 = printf("%hhsad \n");
+    fd1 = printf("%llu\n", -123456);
     printf("\n");
     ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)", fd, fd1);
      //printf("MINE : %d | YOUR  :  %d", fd, fd1);
