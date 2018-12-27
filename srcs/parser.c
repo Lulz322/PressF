@@ -7,13 +7,14 @@
 
 void clean(void)
 {
-	int i;
-	i = 0;
+	int j;
+
+	j = 0;
 	g_cvars.width = 0;
 	g_cvars.length = 0;
 	g_cvars.prec = 0;
-	while (i++ < 5)
-		g_cvars.flag[i] = 0;
+	while (j++ < 5)
+		g_cvars.flag[j] = 0;
 	g_cvars.symbol = 0;
 	g_cvars.dot = 0;
 }
@@ -52,13 +53,13 @@ void parsing(const char *format, va_list argptr)
 		print_number_x(argptr);
 	if (g_cvars.symbol == 'f')
 		print_number_f(argptr);
-	if (g_cvars.symbol == '%' && format[i])
-		print_percent(argptr);
+//	if (g_cvars.symbol == '%' && format[i])
+//		print_percent(argptr);
 	if (g_cvars.symbol == 's')
 		print_string(argptr);
 	if (g_cvars.symbol == 'c')
 		print_char(argptr);
-	if (g_cvars.symbol == 'p')
-		print_number_p(argptr);
+//	if (g_cvars.symbol == 'p')
+//		print_number_p(argptr);
 	clean();
 }

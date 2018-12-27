@@ -107,8 +107,12 @@ void check_cvars(const char *format, va_list argptr)
 	while ((format[i] && ((format[i] != '%' && format[i] != 'x'
 	&& format[i] != 'd' && format[i] != 'o' && format[i] != 'i'
 	&& format[i] != 'f' && format[i] != 'b' && format[i] != 'X'
-	&& format[i] != 'u' && format[i] != 's' && format[i] != 'c'))))
+	&& format[i] != 'u' && format[i] != 's' && format[i] != 'c'
+	&& format[i] != ' '))))
 		i++;
+	if (format[i] == '\0') {
+		while (!ft_isalpha(format[i--]));
+	}
 	check_symbol(format[i]);
 
 }
