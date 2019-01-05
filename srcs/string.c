@@ -8,9 +8,7 @@ void print_string(va_list argptr) {
 	char str[g_cvars.prec + g_cvars.width + 1];
 	char *str_s;
 	char *tmp;
-	int i;
 
-	i = 0;
 	tmp = va_arg(argptr, char *);
 	if (tmp == NULL)
 		str_s = "(null)";
@@ -30,7 +28,7 @@ void print_string(va_list argptr) {
 	print_number_h_s(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
-	if (g_cvars.width && g_cvars.prec)
+	if (tmp != NULL)
 		free(str_s);
 	clean();
 }
@@ -89,5 +87,6 @@ void print_char(va_list argptr) {
 	print_number_h_s(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
+	free(str_s);
 	clean();
 }
