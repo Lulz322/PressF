@@ -139,7 +139,8 @@ void print_number(va_list argptr) {
 	print_number_h(str_s);
 	if (g_cvars.flag[3] != '-')
 	    ft_putstr(str_s);
-	free(str_s);
+	if (ft_strcmp(str_s, "\0"))
+		free(str_s);
 	clean();
 }
 

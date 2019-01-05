@@ -87,6 +87,5 @@ void print_char(va_list argptr) {
 	print_number_h_s(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
-	free(str_s);
 	clean();
 }
