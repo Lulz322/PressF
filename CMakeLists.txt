@@ -37,4 +37,4 @@ add_executable(printf_test
         srcs/string.c
         author
         Makefile
-        qwe.c )
+        qwe.c)
