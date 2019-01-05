@@ -12,19 +12,22 @@
 
 #include "libft.h"
 
-int		len(long long  nb)
+int		len(long long nb)
 {
     int		len;
+    unsigned long long forsure;
 
     len = 0;
     if (nb < 0)
     {
-        nb = nb * -1;
+        forsure = nb * -1;
         len++;
     }
-    while (nb > 0)
+    else
+    	forsure = nb;
+    while (forsure > 0)
     {
-        nb = nb / 10;
+        forsure = forsure / 10;
         len++;
     }
     return (len);
@@ -33,13 +36,15 @@ int		len(long long  nb)
 char	*ft_itoa(long long nb)
 {
     char *str;
-    long long	int n;
+    long long	n;
     int		i;
+    unsigned long long check;
 
     n = nb;
     i = len(n);
+
     if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
-        return (NULL);
+    	return (NULL);
     str[i--] = '\0';
     if (n == 0)
     {
@@ -49,12 +54,14 @@ char	*ft_itoa(long long nb)
     if (n < 0)
     {
         str[0] = '-';
-        n = n * -1;
+        check = nb * -1;
     }
-    while (n > 0)
+    else
+    	check = nb;
+    while (check > 0)
     {
-        str[i] = 48 + (n % 10);
-        n = n / 10;
+        str[i] = 48 + (check % 10);
+        check = check / 10;
         i--;
     }
     return (str);

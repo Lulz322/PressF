@@ -4,7 +4,8 @@
 
 #include "../includes/ft_printf.h"
 
-t_cvars check_flags(const char *format, va_list argptr) {
+t_cvars check_flags(const char *format, va_list argptr)
+{
 	while (format[i] == ' ' || format[i] == '+' || format[i] == '-'
 	       || format[i] == '#' || format[i] == '0') {
 		if (format[i] == ' ')
@@ -19,6 +20,7 @@ t_cvars check_flags(const char *format, va_list argptr) {
 			g_cvars.flag[4] = '#';
 		i++;
 	}
+	return g_cvars;
 }
 
 
@@ -79,6 +81,12 @@ int check_length(const char *format)
 		i++;
 		return (1);
 	}
+	else if (format[i] == 'z')
+	{
+		g_cvars.length = "z";
+		i++;
+		return (1);
+	}
 
 	else {
 		g_cvars.length = "\0";
@@ -107,8 +115,17 @@ void check_cvars(const char *format, va_list argptr)
 	while ((format[i] && ((format[i] != '%' && format[i] != 'x'
 	&& format[i] != 'd' && format[i] != 'o' && format[i] != 'i'
 	&& format[i] != 'f' && format[i] != 'b' && format[i] != 'X'
-	&& format[i] != 'u' && format[i] != 's' && format[i] != 'c'))))
+	&& format[i] != 'u' && format[i] != 's' && format[i] != 'c'
+	&& format[i] != ' ' && format[i] != 'Z' && format[i] != 'p'))))
 		i++;
+	if (format[i] == '\0') {
+		while (format[--i] == ' ');
+	}
+	if (format[i] == 'h')
+	{
+		i++;
+		return;
+	}
 	check_symbol(format[i]);
 
 }

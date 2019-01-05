@@ -22,7 +22,7 @@ char *prec_helper(char *str, char *str_s)
 	}
 	else
 		{
-		if (ft_atoi(str_s) < 0)
+		if (!g_cvars.width && ft_atoi(str_s) < 0)
 			g_cvars.prec++;
 		str = (char *) malloc(sizeof(char) * g_cvars.prec + 1);
 		while (j < g_cvars.prec && str_s[0])
@@ -33,7 +33,7 @@ char *prec_helper(char *str, char *str_s)
 		z++;
 	z--;
 	j--;
-	while (str_s[z]) {
+	while (str_s[z] && z >= 0) {
 		str[j--] = str_s[z--];
 		if (str[j + 1] == '-')
 			str[j + 1] = '0';

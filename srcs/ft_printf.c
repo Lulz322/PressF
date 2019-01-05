@@ -33,7 +33,7 @@
 }*/
 
 
-void color(char *format) {
+void color(const char *format) {
 	if (format[i] == 'M' && format[i + 4] == '(') {
 		if (format[i + 1] == 'R' && format[i + 2] == 'E' &&
 		    format[i + 3] == 'D' &&

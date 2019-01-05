@@ -38,7 +38,7 @@ void print_percent(va_list argptr)
 		str_s = prec_helper(str, str_s);
 	if (g_cvars.width)
 		str_s = width_helper(str_s, 1);
-	print_number_h(str_s);
+	print_number_h_s(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
 

@@ -7,7 +7,7 @@
 char *print_number_part_two_x(unsigned long long sign, char *str_s)
 {
 	uintmax_t qwe;
-	char *str[g_cvars.width + g_cvars.prec + 1];
+	char str[g_cvars.width + g_cvars.prec + 1];
 
 	if (!(ft_strcmp(g_cvars.length, "ll"))) {
 		if (g_cvars.symbol == 'x')
@@ -31,7 +31,7 @@ char *print_number_part_two_x(unsigned long long sign, char *str_s)
 }
 char *print_number_part_one_x(unsigned long long sign, char *str_s)
 {
-	char *str[g_cvars.width + g_cvars.prec + 1];
+	char str[g_cvars.width + g_cvars.prec + 1];
 
 	if (!(ft_strcmp(g_cvars.length, "h"))) {
 		if (g_cvars.symbol == 'x')

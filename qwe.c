@@ -9,11 +9,11 @@ int main(void)
     int fd1;
     unsigned long l;
 
-    fd =  ft_printf("%d %d %d %d gg!", 1, -2, 33, 42, 0);
-    printf("\n");
-    fd1 = printf("%d %d %d %d gg!", 1, -2, 33, 42, 0);
-    printf("\n");
-    ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)", fd, fd1);
+    fd =  ft_printf("%5+d", 42);
+	printf("\n");
+    fd1 = printf("%5+d", 42);
+	printf("\n");
+    ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)\n", fd, fd1);
      //printf("MINE : %d | YOUR  :  %d", fd, fd1);
 
 

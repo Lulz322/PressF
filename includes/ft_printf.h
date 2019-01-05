@@ -90,14 +90,12 @@ _BOOL;
 */
 
 int						ft_printf(const char *format, ...);
-int						ft_dprintf(int fd, const char *format, ...);
 
 /*
 ** -------------------------- Parsing Functions --------------------------------
 */
 
 int check_symbol(char format);
-int print_symbol(char format, va_list argptr);
 void parsing(const char *format, va_list argptr);
 t_cvars check_flags(const char *format, va_list argptr);
 void check_cvars(const char *format, va_list argptr);
@@ -108,14 +106,16 @@ char *width_helper(char *str, int sign);
 char *prec_helper(char *str, char *str_s);
 void clean();
 
-char *print_number_part_two_d(long long int b);
-char *print_number_part_one_d(long long int b);
-char *print_number_part_two_o(long long b, int sign);
-char *print_number_part_one_o(long long b, int sign);
+char *print_number_part_two_d(long long int b, char *);
+char *print_number_part_one_d(long long int b, char *);
+char *print_number_part_two_o(long long b);
+char *print_number_part_one_o(long long b);
 char *print_number_part_two_x(unsigned long long, char *);
 char *print_number_part_one_x(unsigned long long, char *);
 void print_number(va_list argptr);
 void print_number_h(char *str);
+void print_number_h_o(char *str);
+void print_number_h_s(char *str);
 void print_x_h(char *str);
 void print_string(va_list argptr);
 void print_char(va_list argptr);
@@ -134,7 +134,7 @@ char *                   prntnum_upper(long long num, char sign , int base);
 char *                    print_address_hex(void* p0);
 
 char *                   MyFloat(double fVal);
-long long int convertDecimalToOctal(unsigned long long int  decimalNumber);
+char * convertDecimalToOctal(unsigned long long int  decimalNumber);
 char * MyGFloat(double f);
 void byte_to_binary(int x);
 void prec_f(int sign, char *str);
