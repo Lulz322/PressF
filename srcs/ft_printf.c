@@ -78,7 +78,6 @@ void color(const char *format) {
 int ft_printf(const char *format, ...)
 {
 	va_list argptr;
-	va_list test;
 	int j;
 	j = i;
 

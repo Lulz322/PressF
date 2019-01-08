@@ -5,9 +5,9 @@
 #include "../includes/ft_printf.h"
 
 
-
-char *prec_helper(char *str, char *str_s)
+char *prec_helper(char *str_s)
 {
+	char *str;
 	int j;
 	int z;
 
@@ -40,10 +40,11 @@ char *prec_helper(char *str, char *str_s)
 	}
 	if (ft_atoi(str_s) < 0)
 		str[0] = '-';
+	free(str_s);
 	return (str);
 }
 
-char *width_helper(char *str, int sign)
+char *width_helper(char *str)
 {
 	int j;
 	int z;
@@ -57,7 +58,7 @@ char *width_helper(char *str, int sign)
 		return (str);
 	if (((g_cvars.prec > g_cvars.width ) && ft_atoi(str) < 0 ))
 		g_cvars.width--;
-	if (ft_strlen(str) > g_cvars.width)
+	if ((int)ft_strlen(str) > g_cvars.width)
 		g_cvars.width = ft_strlen(str);
 	while (j < g_cvars.width ) {
 		if (!g_cvars.prec && g_cvars.flag[2] == '0' && g_cvars.flag[3] != '-')
@@ -69,5 +70,7 @@ char *width_helper(char *str, int sign)
 	j--;
 	while (str[z] && str_w[j] && z >= 0)
 			str_w[j--] = str[z--];
+	if (str[0] != '\0')
+		free(str);
 	return (str_w);
 }

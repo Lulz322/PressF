@@ -9,13 +9,12 @@ int main(void)
     int fd1;
     unsigned long l;
 
-    fd =  ft_printf("@moulitest: %.d %.0d", 0, 0);
-	printf("\n");
-    fd1 = printf("@moulitest: %.d %.0d", 0, 0);
-	printf("\n");
-    ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)\n", fd, fd1);
-     //printf("MINE : %d | YOUR  :  %d", fd, fd1);
-
+    fd1 = ft_printf("%o\n", 40);
+	//printf("\n");
+    //fd =  printf("%d\n", 40);
+	//printf("\n");
+    //ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)\n", fd, fd1);
+	system("leaks a.out");
 
     return (0);
 }

@@ -34,7 +34,6 @@ char *prntnum_lower(uintmax_t num, char sign , uintmax_t base)
 	if (g_cvars.dot == '.' && g_cvars.prec == 0)
 		outbuf = "\0";
     return (outbuf);
-
 }
 
 char * prntnum_upper(long long num, char sign , int base)
@@ -67,7 +66,6 @@ char * prntnum_upper(long long num, char sign , int base)
 
     outbuf[j] = 0;
     return (outbuf);
-
 }
 
 char hex_digit(int v) {

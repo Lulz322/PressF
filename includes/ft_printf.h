@@ -102,8 +102,8 @@ void check_cvars(const char *format, va_list argptr);
 void check_width(const char *format, va_list argptr);
 void check_prec(const char *format, va_list argptr);
 int check_length(const char *format);
-char *width_helper(char *str, int sign);
-char *prec_helper(char *str, char *str_s);
+char *width_helper(char *str);
+char *prec_helper(char *str_s);
 void clean();
 
 char *print_number_part_two_d(long long int b, char *);

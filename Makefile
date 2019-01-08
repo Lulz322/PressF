@@ -6,7 +6,7 @@
 #    By: bsouchet <bsouchet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/03 22:30:54 by bsouchet          #+#    #+#              #
-#    Updated: 2018/12/21 15:47:53 by iruban           ###   ########.fr        #
+#    Updated: 2019/01/08 11:42:52 by iruban           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ C = clang
 
 NAME = libftprintf.a
 
-//FLAGS = -Wall -Wextra -Werror -O2
+FLAGS = -Wall -Wextra -Werror -O2
 
 LIBFT = libft
 

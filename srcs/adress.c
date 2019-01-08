@@ -8,8 +8,6 @@ void print_number_p(va_list argptr)
 {
 	void *number;
 	char *str_s;
-	char str[g_cvars.prec + g_cvars.width + 1];
-	int sign;
 
 	number = va_arg(argptr, void *);
 	if (number)
@@ -17,9 +15,9 @@ void print_number_p(va_list argptr)
 	else
 		str_s = "0x0";
 	if (g_cvars.prec)
-			str_s = prec_helper(str, str_s);
+			str_s = prec_helper(str_s);
 	if (g_cvars.width)
-		str_s = width_helper(str_s, sign);
+		str_s = width_helper(str_s);
 	print_number_h(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
@@ -31,16 +29,17 @@ void print_number_p(va_list argptr)
 void print_percent(va_list argptr)
 {
 	char *str_s;
-	char str[g_cvars.prec + g_cvars.width + 1];
-
-	str_s = "%\0";
+	if (!argptr)
+		return;
+	str_s = ft_strdup("%\0");
 	if (g_cvars.prec)
-		str_s = prec_helper(str, str_s);
+		str_s = prec_helper(str_s);
 	if (g_cvars.width)
-		str_s = width_helper(str_s, 1);
+		str_s = width_helper(str_s);
 	print_number_h_s(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
+	free(str_s);
 
 	clean();
 }
