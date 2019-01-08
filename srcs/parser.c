@@ -42,8 +42,7 @@ void parsing(const char *format, va_list argptr)
 		clean();
 		return;
 	}
-	if (g_cvars.symbol == 'd' || g_cvars.symbol == 'i' ||
-	g_cvars.symbol == 'D' || g_cvars.symbol == 'I')
+	if (g_cvars.symbol == 'd' || g_cvars.symbol == 'i')
 		print_number(argptr);
 	if (g_cvars.symbol == 'o')
 		print_number_o(argptr);
