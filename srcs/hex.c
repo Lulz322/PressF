@@ -100,15 +100,16 @@ char *print_address_hex(void* p0) {
     return (str);
 }
 
-unsigned long long convertDecimalToOctal(unsigned long long int  decimalNumber)
+char * convertDecimalToOctal(unsigned long long int  decimalNumber)
 {
     long long int octalNumber = 0, i = 1;
-
+	char *str;
     while (decimalNumber != 0)
     {
         octalNumber += (decimalNumber % 8) * i;
         decimalNumber /= 8;
         i *= 10;
     }
-    return (octalNumber);
+    str = ft_itoa(octalNumber);
+    return (str);
 }

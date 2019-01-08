@@ -33,10 +33,10 @@ static		void	check_sign(const char *str, int *i, int *sign)
 		(*i)++;
 }
 
-int					ft_atoi(const char *str)
+long long			ft_atoi(const char *str)
 {
 	int		i;
-	long long int		answer;
+	long long 		answer;
 	int		sign;
 
 	sign = 0;

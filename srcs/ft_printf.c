@@ -78,8 +78,6 @@ void color(const char *format) {
 int ft_printf(const char *format, ...)
 {
 	va_list argptr;
-	int j;
-	j = i;
 
 	symbols = 0;
 	i = 0;
@@ -97,7 +95,6 @@ int ft_printf(const char *format, ...)
     }
     va_end(argptr);
     clean();
-	i = j;
 	return (symbols);
 }
 

@@ -10,7 +10,7 @@ void print_string(va_list argptr) {
 
 	tmp = va_arg(argptr, char *);
 	if (tmp == NULL)
-		str_s = ft_strdup("(null)");
+		str_s = ft_strdup("(null)\0");
 	else {
 		str_s = ft_strdup(tmp);
 		str_s[ft_strlen(tmp)] = '\0';

@@ -9,7 +9,7 @@ char *print_number_part_two_o(long long b)
 	char *str_s;
 
 	if (!(ft_strcmp(g_cvars.length, "ll"))) {
-		str_s = ft_itoa((unsigned long long )b);
+		str_s = ft_itoa((unsigned long long)b);
 		if (g_cvars.prec) {
 			str_s = prec_helper(str_s);
 		}
@@ -70,7 +70,7 @@ void print_number_h_o(char *str)
 				str[counter - 1] = '0';
 			}
 			else
-				if (!g_cvars.width && !g_cvars.prec)
+				if (!g_cvars.width && !g_cvars.prec && ft_atoi(str) != 0)
 					ft_putchar('0');
 
 		}
@@ -100,12 +100,17 @@ void print_number_h_o(char *str)
 		}
 }
 
+
 void print_number_o(va_list argptr) {
-	unsigned long long  b;
+	long long  b;
 	char *str_s;
+	char *tmp;
 
 	b = va_arg(argptr, unsigned int);
-	b = convertDecimalToOctal(b);
+	tmp = convertDecimalToOctal(b);
+	b = ft_atoi(tmp);
+	if (b != 0)
+		free(tmp);
 	if (ft_strcmp(g_cvars.length, "\0")) {
 		str_s = print_number_part_one_o(b);
 		str_s = print_number_part_two_o(b);
@@ -125,7 +130,7 @@ void print_number_o(va_list argptr) {
 	print_number_h_o(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
-	if (ft_strcmp(str_s , "\0"))
+	if (ft_strcmp(str_s, "\0"))
 		free(str_s);
 	clean();
 }

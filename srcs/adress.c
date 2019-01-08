@@ -25,21 +25,29 @@ void print_number_p(va_list argptr)
 		free(str_s);
 	clean();
 }
+void	ft_strdel(char **as)
+{
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
+}
 
 void print_percent(va_list argptr)
 {
 	char *str_s;
 	if (!argptr)
 		return;
-	str_s = ft_strdup("%\0");
-	if (g_cvars.prec)
-		str_s = prec_helper(str_s);
+	str_s = (char *)malloc(sizeof(char) * 2);
+	str_s[0] = '%';
+	str_s[1] = '\0';
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
 	print_number_h_s(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
-	free(str_s);
+	ft_strdel(&str_s);
 
 	clean();
 }
