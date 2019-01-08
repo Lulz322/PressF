@@ -101,11 +101,11 @@ void print_number_h_o(char *str)
 }
 
 void print_number_o(va_list argptr) {
-	unsigned long long int  b;
+	unsigned long long  b;
 	char *str_s;
 
 	b = va_arg(argptr, unsigned int);
-	b = ft_atoi(convertDecimalToOctal(b));
+	b = convertDecimalToOctal(b);
 	if (ft_strcmp(g_cvars.length, "\0")) {
 		str_s = print_number_part_one_o(b);
 		str_s = print_number_part_two_o(b);
