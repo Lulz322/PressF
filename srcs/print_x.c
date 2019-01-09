@@ -114,12 +114,13 @@ void print_number_x(va_list argptr) {
 		sign = va_arg(argptr, uintmax_t);
 	else
 		sign = va_arg(argptr, unsigned long long);
+
 	if (sign == 0 && !g_cvars.prec && !g_cvars.width && g_cvars.dot != '.') {
 		ft_putchar('0');
 		return;
 	}
 	if (g_cvars.dot == '.'&& g_cvars.prec == 0 && g_cvars.width == 0)
-		str_s = "\0";
+		str_s = ft_strdup("\0");
 	if (ft_strcmp(g_cvars.length, "\0"))
 	{
 		str_s = print_number_part_one_x(sign, str_s);
@@ -140,7 +141,10 @@ void print_number_x(va_list argptr) {
 		if (g_cvars.prec)
 			str_s = prec_helper(str_s);
 	}
-
+	if (sign >= 184467440737095516 && g_cvars.symbol == 'X')
+		str_s = ft_strdup("FFFFFFFFFFFFFFFF");
+	if (sign >= 184467440737095516 && g_cvars.symbol == 'x')
+		str_s = ft_strdup("ffffffffffffffff");
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
 	print_x_h(str_s);

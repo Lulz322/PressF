@@ -9,7 +9,7 @@ void clean(void)
 {
 	int j;
 
-	j = 0;
+	j = -1;
 	g_cvars.width = 0;
 	g_cvars.length = 0;
 	g_cvars.prec = 0;

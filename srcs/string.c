@@ -10,17 +10,13 @@ void print_string(va_list argptr) {
 
 	tmp = va_arg(argptr, char *);
 	if (tmp == NULL)
-		str_s = ft_strdup("(null)\0");
+		str_s = ft_strdup("(null)");
 	else {
 		str_s = ft_strdup(tmp);
-		str_s[ft_strlen(tmp)] = '\0';
 	}
-	if (g_cvars.prec) {
-		if (g_cvars.prec > (int)ft_strlen(str_s))
-			str_s = prec_helper(str_s);
-		else {
+	if (g_cvars.prec || g_cvars.dot == '.') {
+		if (g_cvars.prec < (int)ft_strlen(str_s))
 			str_s[g_cvars.prec] = '\0';
-		}
 	}
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
@@ -64,23 +60,26 @@ void print_number_h_s(char *str)
 
 void print_char(va_list argptr) {
 	char *str_s;
+	char c;
+
 
 	if (!(str_s = (char *)malloc(sizeof(char) * 2)))
 		return;
-	str_s[0] = va_arg(argptr, unsigned int);
+	c = va_arg(argptr, unsigned int);
+	str_s[0] = c;
 	str_s[1] = '\0';
-	if (str_s[0] == '\0') {
-		if (g_cvars.width)
-			ft_putchar(' ');
-		symbols--;
-		str_s = ft_strdup("^@");
-	}
 	if (g_cvars.prec)
 		str_s = prec_helper(str_s);
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
 	print_number_h_s(str_s);
-	if (g_cvars.flag[3] != '-')
+	if (c == '\0')
+	{
+		str_s[ft_strlen(str_s) - 1] = '\0';
+		ft_putstr(str_s);
+		ft_putchar(c);
+	}
+	if (g_cvars.flag[3] != '-' && c != '\0')
 		ft_putstr(str_s);
 	if (ft_strcmp(str_s, "\0"))
 		free(str_s);

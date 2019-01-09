@@ -26,3 +26,17 @@ void		ft_putstr(char const *str)
 		}
 	}
 }
+
+void        ft_revputstr(const char *str)
+{
+	int index;
+
+	index = 0;
+	while (str[++index]);
+
+	if (str)
+	{
+		while(index)
+			ft_putchar(str[--index]);
+	}
+}

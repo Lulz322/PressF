@@ -70,22 +70,25 @@ void print_number_h(char *str)
 			}
 		}
 	}
-	if (g_cvars.flag[0] == ' ')
+	if (g_cvars.flag[0] == ' ') {
 		if (g_cvars.flag[1] != '+' && ft_atoi(str) > 0 && g_cvars.symbol != 'u')
 			if (g_cvars.prec >= g_cvars.width)
 				ft_putchar(' ');
+		if (g_cvars.width > g_cvars.prec && ft_atoi(str) >= 0 && g_cvars.flag[2] == '0')
+			str[0] = ' ';
+	}
 	if (g_cvars.flag[1] == '+')
 	{
 		i = 0;
-		if ((g_cvars.prec > g_cvars.width || (!g_cvars.prec && !g_cvars.width))
-		&& ft_atoi(str) >= 0 && g_cvars.symbol != 'u')
-			ft_putstr("+");
-		if (g_cvars.width > g_cvars.prec && ft_atoi(str) > 0) {
+		if (((g_cvars.width < (int)ft_strlen(str) && g_cvars.symbol != 'u') && ft_atoi(str) >= 0)
+		|| ((int)ft_strlen(str) < g_cvars.width && ft_atoi(str) >= 0))
+			ft_putchar('+');
+		if (g_cvars.width >= (int)ft_strlen(str) && g_cvars.symbol != 'u' && ft_atoi(str) >= 0)
+			str[0] = '+';
+		if (g_cvars.width > g_cvars.prec && ft_atoi(str) >= 0) {
 			while (str[i++] == ' ');
 			str[i - 2] = '+';
 		}
-		if (g_cvars.width > g_cvars.prec && ft_atoi(str) > 0 && g_cvars.flag[2] == '0')
-			str[0] = '+';
 	}
 	if (g_cvars.flag[3] == '-')
 	{
@@ -95,7 +98,8 @@ void print_number_h(char *str)
 			ft_putstr(str);
 			return ;
 		}
-		while (str[++i] == ' ');
+		while (str[i] == ' ')
+			i++;
 		if (ft_atoi(str) < 0 && !g_cvars.width)
 			i--;
 		while (str[i])
@@ -133,7 +137,7 @@ void print_number(va_list argptr) {
 	if (g_cvars.flag[3] != '-')
 	    ft_putstr(str_s);
 	if (ft_strcmp(str_s , "\0"))
-		ft_strdel(&str_s);
+		free(str_s);
 	clean();
 }
 

@@ -33,6 +33,23 @@ int		len(long long nb)
     return (len);
 }
 
+int		ulen(unsigned long long nb)
+{
+    int		len;
+    unsigned long long forsure;
+
+    len = 0;
+
+    forsure = nb;
+    while (forsure > 0)
+    {
+        forsure = forsure / 10;
+        len++;
+    }
+    return (len);
+}
+
+
 char	*ft_itoa(long long nb)
 {
     char *str;
@@ -41,11 +58,14 @@ char	*ft_itoa(long long nb)
     unsigned long long check;
 
     n = nb;
+
     i = len(n);
 
     if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
     	return (NULL);
     str[i--] = '\0';
+    if (nb == 0)
+    	str = ft_strdup("0\0");
     if (n == 0)
     {
         str[0] = 48;
@@ -65,4 +85,34 @@ char	*ft_itoa(long long nb)
         i--;
     }
     return (str);
+}
+char	*ft_uitoa(unsigned long long nb)
+{
+	char *str;
+	unsigned long long	n;
+	int		i;
+	unsigned long long check;
+
+	n = nb;
+
+	i = ulen(n);
+
+	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	str[i--] = '\0';
+	if (nb == 0)
+		str = ft_strdup("0\0");
+	if (n == 0)
+	{
+		str[0] = 48;
+		return (str);
+	}
+	check = nb;
+	while (check > 0)
+	{
+		str[i] = 48 + (check % 10);
+		check = check / 10;
+		i--;
+	}
+	return (str);
 }

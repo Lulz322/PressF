@@ -78,21 +78,20 @@ char hex_digit(int v) {
 char *print_address_hex(void* p0) {
     int i;
     int counter;
-    counter = 1;
+    counter = -13;
     uintptr_t p = (uintptr_t)p0;
     char *str;
 
 	str = (char *)malloc(sizeof(char) * 255);
 
-	str[0] = '0';
-	str[1] = 'x';
-    i = (sizeof(p) << 3) - 4;
+	i = (sizeof(p) << 3) - 4;
+
     while (i >= 0)
     {
-        if (counter == 1) {
+        if (counter == -13) {
             while (hex_digit((p >> i) & 0xf) == '0')
                 i -= 4;
-            counter = 2;
+            counter = 0;
         }
         str[counter++] = hex_digit((p >> i) & 0xf);
         i -= 4;
@@ -102,14 +101,22 @@ char *print_address_hex(void* p0) {
 
 char * convertDecimalToOctal(unsigned long long int  decimalNumber)
 {
-    long long int octalNumber = 0, i = 1;
-	char *str;
+    unsigned long long  octalNumber = 0;
+    unsigned long long i = 1;
+    unsigned long long test = 1844674407370955120;
+
+    char *str;
+
+    if (decimalNumber >= test && g_cvars.symbol != 'z')
+    	return (ft_strdup("1777777777777777777777"));
+	if (decimalNumber >= test && g_cvars.symbol == 'z')
+		return (ft_strdup("18446744073709551615"));
     while (decimalNumber != 0)
     {
         octalNumber += (decimalNumber % 8) * i;
         decimalNumber /= 8;
         i *= 10;
     }
-    str = ft_itoa(octalNumber);
+    str = ft_uitoa(octalNumber);
     return (str);
 }
