@@ -91,7 +91,7 @@ char *print_address_hex(void* p0) {
         if (counter == -13) {
             while (hex_digit((p >> i) & 0xf) == '0')
                 i -= 4;
-            counter = 0;
+			counter = 0;
         }
         str[counter++] = hex_digit((p >> i) & 0xf);
         i -= 4;

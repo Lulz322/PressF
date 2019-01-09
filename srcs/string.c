@@ -68,8 +68,6 @@ void print_char(va_list argptr) {
 	c = va_arg(argptr, unsigned int);
 	str_s[0] = c;
 	str_s[1] = '\0';
-	if (g_cvars.prec)
-		str_s = prec_helper(str_s);
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
 	print_number_h_s(str_s);
@@ -81,7 +79,6 @@ void print_char(va_list argptr) {
 	}
 	if (g_cvars.flag[3] != '-' && c != '\0')
 		ft_putstr(str_s);
-	if (ft_strcmp(str_s, "\0"))
-		free(str_s);
+	free(str_s);
 	clean();
 }

@@ -132,7 +132,11 @@ void print_number_o(va_list argptr) {
 		b = ft_atoi(tmp);
 		if (b != 0)
 			free(tmp);
-		str_s = ft_itoa(b);
+		if (g_cvars.dot == '.' && g_cvars.prec == 0 && b == 0)
+			str_s = ft_strdup("");
+		else
+			str_s = ft_itoa(b);
+
 	}
 	else
 	{
@@ -161,7 +165,10 @@ void print_number_u(va_list argptr) {
 	if (!ft_strcmp(g_cvars.length, "\0"))
 	{
 		b = va_arg(argptr, unsigned int);
-		str_s = ft_itoa(b);
+		if (g_cvars.dot == '.' && g_cvars.prec == 0 && b == 0)
+			str_s = ft_strdup("");
+		else
+			str_s = ft_itoa(b);
 	}
 	else
 	{

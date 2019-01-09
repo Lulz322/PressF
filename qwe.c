@@ -14,9 +14,9 @@ int main(void)
 
 
 
-	fd = ft_printf("%.p, %.0p", 0, 0);
+	fd = ft_printf("%C\n", 15000);
 	ft_printf("\n");
-	fd1 = printf("%.p, %.0p", 0, 0);
+	fd1 = printf("%C\n", 15000);
 	printf("\n");
 
 
