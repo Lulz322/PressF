@@ -142,9 +142,9 @@ void print_number_x(va_list argptr) {
 			str_s = prec_helper(str_s);
 	}
 	if (sign >= 184467440737095516 && g_cvars.symbol == 'X')
-		str_s = ft_strdup("FFFFFFFFFFFFFFFF");
+		str_s = ft_strdup("7FFFFFFFFFFFFFFF");
 	if (sign >= 184467440737095516 && g_cvars.symbol == 'x')
-		str_s = ft_strdup("ffffffffffffffff");
+		str_s = ft_strdup("7fffffffffffffff");
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
 	print_x_h(str_s);

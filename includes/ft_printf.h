@@ -106,8 +106,8 @@ char *width_helper(char *str);
 char *prec_helper(char *str_s);
 void clean();
 
-char *print_number_part_two_d(long long int b, char *);
-char *print_number_part_one_d(long long int b, char *);
+char *print_number_part_two_d(long long int b, char **);
+char *print_number_part_one_d(long long int b, char **);
 char *print_number_part_two_o(va_list);
 char *print_number_part_one_o(va_list);
 char *print_number_part_two_x(unsigned long long, char *);

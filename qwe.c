@@ -13,14 +13,16 @@ int main(void)
     unsigned long i;
 
 
-
-	fd = ft_printf("%C\n", 15000);
-	ft_printf("\n");
-	fd1 = printf("%C\n", 15000);
-	printf("\n");
+	i = 0;
+    while (i++ < 5) {
+	    fd = ft_printf("%ju", 4294967296);
+	    ft_printf("\n");
+	    fd1 = printf("%ju", 4294967296);
+	    printf("\n");
 
 
 //
 	ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)\n", fd, fd1);
+    }
     return (0);
 }

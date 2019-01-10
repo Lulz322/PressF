@@ -4,26 +4,41 @@
 
 #include "../includes/ft_printf.h"
 
+
+char *valid(char *str)
+{
+	int a;
+
+	a = 0;
+	while (str[a] != '0')
+		a++;
+	str[++a] = 'x';
+	a++;
+	while (str[a] != 'x' && str[a])
+		a++;
+	if (str[a] != '\0')
+		str[a] = '0';
+	return (str);
+}
+
+
+
+
 void print_number_p(va_list argptr)
 {
 	void *number;
 	char *str_s;
 
 	number = va_arg(argptr, void *);
-	if (number)
-		str_s = print_address_hex(number);
-	else
-	{
-		if (g_cvars.dot != '.')
-			str_s = ft_strdup("0");
-	}
-
-	ft_putstr("0x");
+	str_s = print_address_hex(number);
+	if (g_cvars.prec != 0)
+		g_cvars.prec += 2;
 	if (g_cvars.prec)
 			str_s = prec_helper(str_s);
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
-	//print_number_h(str_s);
+	str_s = valid(str_s);
+	print_number_h(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
 	if (number)

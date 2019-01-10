@@ -60,12 +60,12 @@ char	*ft_itoa(long long nb)
     n = nb;
 
     i = len(n);
-
-    if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+	if (nb == 0)
+		str = ft_strdup("0");
+	else if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
     	return (NULL);
     str[i--] = '\0';
-    if (nb == 0)
-    	str = ft_strdup("0\0");
+
     if (n == 0)
     {
         str[0] = 48;

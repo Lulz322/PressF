@@ -54,7 +54,7 @@ char *width_helper(char *str)
 	j = 0;
 	z = ft_strlen(str);
 	z--;
-	if ((g_cvars.prec > g_cvars.width || len(ft_atoi(str)) > g_cvars.width)
+	if ((g_cvars.prec > g_cvars.width || (int)ft_strlen(str) > g_cvars.width)
 	&& g_cvars.symbol != 's')
 		return (str);
 	if (((g_cvars.prec > g_cvars.width ) && ft_atoi(str) < 0 ))

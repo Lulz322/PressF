@@ -85,13 +85,17 @@ char *print_address_hex(void* p0) {
 	str = (char *)malloc(sizeof(char) * 255);
 
 	i = (sizeof(p) << 3) - 4;
-
+	ft_strcat(str, "0x");
+	if (p0 == NULL && g_cvars.dot != '.')
+		return (ft_strcat(str, "0"));
+	if (p0 == NULL)
+		return str;
     while (i >= 0)
     {
         if (counter == -13) {
             while (hex_digit((p >> i) & 0xf) == '0')
                 i -= 4;
-			counter = 0;
+			counter = 2;
         }
         str[counter++] = hex_digit((p >> i) & 0xf);
         i -= 4;
