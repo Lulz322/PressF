@@ -105,6 +105,21 @@ void print_x_h(char *str)
 	}
 }
 
+char *kostil(char *str_s, long long sign)
+{
+	if (sign >= 184467440737095516 && g_cvars.symbol == 'X')
+		str_s = ft_strdup("FFFFFFFFFFFFFFFF");
+	if (sign >= 184467440737095516 && g_cvars.symbol == 'x')
+		str_s = ft_strdup("ffffffffffffffff");
+	if (sign >= 9223372036854775807 && g_cvars.symbol == 'x')
+		str_s = ft_strdup("7fffffffffffffff");
+	if (sign >= 9223372036854775807 && g_cvars.symbol == 'X')
+		str_s = ft_strdup("7FFFFFFFFFFFFFFF");
+
+
+	return (str_s);
+}
+
 
 void print_number_x(va_list argptr) {
 	char *str_s;
@@ -141,10 +156,7 @@ void print_number_x(va_list argptr) {
 		if (g_cvars.prec)
 			str_s = prec_helper(str_s);
 	}
-	if (sign >= 184467440737095516 && g_cvars.symbol == 'X')
-		str_s = ft_strdup("7FFFFFFFFFFFFFFF");
-	if (sign >= 184467440737095516 && g_cvars.symbol == 'x')
-		str_s = ft_strdup("7fffffffffffffff");
+	str_s = kostil(str_s, sign);
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
 	print_x_h(str_s);

@@ -15,14 +15,15 @@ int main(void)
 
 	i = 0;
     while (i++ < 5) {
-	    fd = ft_printf("%ju", 4294967296);
+	    fd = ft_printf("%lx, %lx", 0, ULONG_MAX);
 	    ft_printf("\n");
-	    fd1 = printf("%ju", 4294967296);
+	    fd1 = printf("%lx, %lx", 0, ULONG_MAX);
 	    printf("\n");
 
 
 //
 	ft_printf("MYLW(MINE) : MCYN(%d) | MRED(YOUR)  :  MBLU(%d)\n", fd, fd1);
     }
+    system("leaks a.out");
     return (0);
 }

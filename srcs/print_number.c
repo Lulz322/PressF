@@ -77,10 +77,12 @@ void print_number_h(char *str)
 		if (g_cvars.width >= (int)ft_strlen(str) && g_cvars.symbol != 'u' && ft_atoi(str) >= 0)
 			str[0] = '+';
 		if (g_cvars.width > g_cvars.prec && ft_atoi(str) >= 0) {
-			if (g_cvars.flag[2] == '0')
-				str[0] = '0';
-			else
-				str[0] = ' ';
+			if (str[0] == '+') {
+				if (g_cvars.flag[2] == '0')
+					str[0] = '0';
+				else
+					str[0] = ' ';
+			}
 			if ((int)ft_strlen(str) == g_cvars.width)
 				i++;
 			while (str[i++] == ' ');
