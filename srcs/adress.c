@@ -1,11 +1,18 @@
-//
-// Created by Ihor RUBAN on 12/21/18.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   adress.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iruban <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/14 11:15:09 by iruban            #+#    #+#             */
+/*   Updated: 2019/01/14 11:18:11 by iruban           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-
-char *valid(char *str)
+char	*valid(char *str)
 {
 	int a;
 
@@ -21,20 +28,17 @@ char *valid(char *str)
 	return (str);
 }
 
-
-
-
-void print_number_p(va_list argptr)
+void	print_number_p(va_list argptr)
 {
 	void *number;
 	char *str_s;
 
 	number = va_arg(argptr, void *);
-	str_s = print_address_hex(number);
+	str_s = print_address_hex(number, -13);
 	if (g_cvars.prec != 0)
 		g_cvars.prec += 2;
 	if (g_cvars.prec)
-			str_s = prec_helper(str_s);
+		str_s = prec_helper(str_s);
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
 	str_s = valid(str_s);
@@ -45,6 +49,7 @@ void print_number_p(va_list argptr)
 		free(str_s);
 	clean();
 }
+
 void	ft_strdel(char **as)
 {
 	if (as != NULL)
@@ -54,11 +59,12 @@ void	ft_strdel(char **as)
 	}
 }
 
-void print_percent(va_list argptr)
+void	print_percent(va_list argptr)
 {
 	char *str_s;
+
 	if (!argptr)
-		return;
+		return ;
 	str_s = ft_strdup("%\0");
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
@@ -68,4 +74,3 @@ void print_percent(va_list argptr)
 	ft_strdel(&str_s);
 	clean();
 }
-

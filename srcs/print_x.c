@@ -125,11 +125,10 @@ void print_number_x(va_list argptr) {
 	char *str_s;
 	uintmax_t sign;
 
-	if (!(ft_strcmp(g_cvars.length, "j")))
-		sign = va_arg(argptr, uintmax_t);
+	if (!(ft_strcmp(g_cvars.length, "\0")))
+		sign = va_arg(argptr, unsigned int);
 	else
 		sign = va_arg(argptr, unsigned long long);
-
 	if (sign == 0 && !g_cvars.prec && !g_cvars.width && g_cvars.dot != '.') {
 		ft_putchar('0');
 		return;

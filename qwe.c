@@ -15,9 +15,9 @@ int main(void)
 
 	i = 0;
     while (i++ < 5) {
-	    fd = ft_printf("%lx, %lx", 0, ULONG_MAX);
+	    fd = ft_printf("%10.4d", 42949696);
 	    ft_printf("\n");
-	    fd1 = printf("%lx, %lx", 0, ULONG_MAX);
+	    fd1 = printf("%10.4d", 42949696);
 	    printf("\n");
 
 

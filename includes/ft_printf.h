@@ -129,13 +129,12 @@ void print_percent(va_list argptr);
 ** -------------------------- Numbers Functions --------------------------------
 */
 
-char *                 prntnum_lower(uintmax_t num, char sign , uintmax_t base);
+char *                 prntnum_lower(unsigned long long num, char sign , unsigned long long base);
 char *                   prntnum_upper(long long num, char sign , int base);
-char *                    print_address_hex(void* p0);
+char *                    print_address_hex(void* p0,  int);
 
-char *                   MyFloat(double fVal);
-char * convertDecimalToOctal(unsigned long long  decimalNumber);
-char * MyGFloat(double f);
+char *                   myfloat(double fVal);
+char * convertdecimaltooctal(unsigned long long  decimalNumber);
 void byte_to_binary(int x);
 void prec_f(int sign, char *str);
 

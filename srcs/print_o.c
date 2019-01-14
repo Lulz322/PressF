@@ -12,7 +12,7 @@ char *print_number_part_two_o(va_list argptr)
 		if (g_cvars.symbol == 'u')
 			str_s = ft_uitoa(va_arg(argptr, unsigned long long));
 		else
-			str_s = convertDecimalToOctal(va_arg(argptr, unsigned long long));
+			str_s = convertdecimaltooctal(va_arg(argptr, unsigned long long));
 		if (g_cvars.prec) {
 			str_s = prec_helper(str_s);
 		}
@@ -21,7 +21,7 @@ char *print_number_part_two_o(va_list argptr)
 		if (g_cvars.symbol == 'u')
 			str_s = ft_uitoa(va_arg(argptr, unsigned  long));
 		else
-			str_s = convertDecimalToOctal(va_arg(argptr, unsigned  long));
+			str_s = convertdecimaltooctal(va_arg(argptr, unsigned  long));
 		if (g_cvars.prec) {
 			str_s = prec_helper(str_s);
 		}
@@ -30,7 +30,7 @@ char *print_number_part_two_o(va_list argptr)
 		if (g_cvars.symbol == 'u')
 			str_s = ft_uitoa((va_arg(argptr, unsigned long long)));
 		else
-			str_s = convertDecimalToOctal(va_arg(argptr, unsigned long long));
+			str_s = convertdecimaltooctal(va_arg(argptr, unsigned long long));
 		if (g_cvars.prec) {
 			str_s = prec_helper(str_s);
 		}
@@ -46,7 +46,7 @@ char *print_number_part_one_o(va_list argptr)
 		if (g_cvars.symbol == 'u')
 			str_s = ft_uitoa((unsigned short)va_arg(argptr, unsigned int));
 		else
-			str_s = convertDecimalToOctal((unsigned short)va_arg(argptr, unsigned int));
+			str_s = convertdecimaltooctal((unsigned short)va_arg(argptr, unsigned int));
 		if (g_cvars.prec) {
 			str_s = prec_helper(str_s);
 		}
@@ -55,7 +55,7 @@ char *print_number_part_one_o(va_list argptr)
 		if (g_cvars.symbol == 'u')
 			str_s = ft_uitoa((unsigned char)(va_arg(argptr, unsigned int)));
 		else
-			str_s = convertDecimalToOctal((unsigned char)va_arg(argptr, unsigned int));
+			str_s = convertdecimaltooctal((unsigned char)va_arg(argptr, unsigned int));
 		if (g_cvars.prec) {
 			str_s = prec_helper(str_s);
 		}
@@ -64,7 +64,7 @@ char *print_number_part_one_o(va_list argptr)
 		if (g_cvars.symbol == 'u')
 			str_s = ft_uitoa((va_arg(argptr, intmax_t)));
 		else
-			str_s = convertDecimalToOctal(va_arg(argptr, intmax_t));
+			str_s = convertdecimaltooctal(va_arg(argptr, intmax_t));
 		if (g_cvars.prec) {
 			str_s = prec_helper(str_s);
 		}
@@ -128,7 +128,7 @@ void print_number_o(va_list argptr) {
 	if (!ft_strcmp(g_cvars.length, "\0"))
 	{
 		b = va_arg(argptr, unsigned int);
-		tmp = convertDecimalToOctal(b);
+		tmp = convertdecimaltooctal(b);
 		b = ft_atoi(tmp);
 		if (b != 0)
 			free(tmp);
