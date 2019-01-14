@@ -15,7 +15,7 @@
 char	*float_helper(char *str, double f, int value, int pos)
 {
 	char	*curr;
-	char	len;
+	int		len;
 
 	len = pos - 1;
 	while (pos < (len + 7))
@@ -31,6 +31,22 @@ char	*float_helper(char *str, double f, int value, int pos)
 	return (str);
 }
 
+double	check_f(void)
+{
+	double	f;
+	int		n;
+
+	n = 0;
+	f = 0.5;
+	if (g_cvars.prec >= 0)
+	{
+		while (n++ < g_cvars.prec)
+			f /= 10;
+		return (f);
+	}
+	return (0.000005);
+}
+
 char	*myfloat(double f)
 {
 	char			*str;
@@ -38,7 +54,7 @@ char	*myfloat(double f)
 	char			len;
 	int				value;
 
-	f += 0.0000005;
+	f += check_f();
 	pos = 0;
 	value = (int)f;
 	str = ft_itoa(value);
@@ -70,7 +86,6 @@ void	print_number_f(va_list argptr)
 	}
 	if (g_cvars.width)
 		str_s = width_helper(str_s);
-	print_number_h(str_s);
 	if (g_cvars.flag[3] != '-')
 		ft_putstr(str_s);
 	if (ft_strcmp(str_s, "\0"))
@@ -118,8 +133,6 @@ void	prec_f(int sign, char *str)
 		str[z + j] = '\0';
 		if (sign == -1)
 			str_w[j + 1] = '-';
-		if (!(g_cvars.width))
-			ft_putstr(str_w);
 	}
 	prec_f_helper(str, j);
 }

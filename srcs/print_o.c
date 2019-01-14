@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-char	*print_number_part_two_o(va_list argptr)
+char				*print_number_part_two_o(va_list argptr)
 {
 	char *str_s;
 
@@ -40,7 +40,7 @@ char	*print_number_part_two_o(va_list argptr)
 	return (str_s);
 }
 
-char	*print_number_part_one_o(va_list argptr)
+char				*print_number_part_one_o(va_list argptr)
 {
 	char *str_s;
 
@@ -68,7 +68,7 @@ char	*print_number_part_one_o(va_list argptr)
 	return (str_s);
 }
 
-char	*print_number_h_o_helper_one(char *str)
+char				*print_number_h_o_helper_one(char *str)
 {
 	int i;
 
@@ -85,7 +85,7 @@ char	*print_number_h_o_helper_one(char *str)
 	return (str);
 }
 
-char	*print_number_h_o_helper_two(char *str)
+char				*print_number_h_o_helper_two(char *str)
 {
 	int counter;
 
@@ -104,7 +104,7 @@ char	*print_number_h_o_helper_two(char *str)
 	return (str);
 }
 
-void	print_number_h_o(char *str)
+void				print_number_h_o(char *str)
 {
 	int i;
 
@@ -130,7 +130,7 @@ void	print_number_h_o(char *str)
 	}
 }
 
-char	*print_number_o_hepler(char *str_s)
+char				*print_number_o_hepler(char *str_s)
 {
 	if (ft_atoi(str_s) == 0 && g_cvars.width == 0 && g_cvars.prec == 0
 		&& (g_cvars.dot != '.' || g_cvars.flag[4] == '#'))
@@ -142,14 +142,26 @@ char	*print_number_o_hepler(char *str_s)
 	return (str_s);
 }
 
-void	print_number_o(va_list argptr)
+unsigned long long	print_number_o_hhh(unsigned long long b)
+{
+	char *tmp;
+
+	tmp = dcto(b);
+	b = ft_atoi(tmp);
+	if (tmp)
+		free(tmp);
+	return (b);
+}
+
+void				print_number_o(va_list argptr)
 {
 	unsigned long long	b;
 	char				*str_s;
 
 	if (!ft_strcmp(g_cvars.length, "\0"))
 	{
-		b = ft_atoi(dcto(va_arg(argptr, unsigned int)));
+		b = va_arg(argptr, unsigned int);
+		b = print_number_o_hhh(b);
 		if (g_cvars.dot == '.' && g_cvars.prec == 0 && b == 0)
 			str_s = ft_strdup("");
 		else
@@ -168,7 +180,7 @@ void	print_number_o(va_list argptr)
 		free(str_s);
 }
 
-char	*print_number_u_helper(char *str_s)
+char				*print_number_u_helper(char *str_s)
 {
 	if (g_cvars.prec)
 		str_s = prec_helper(str_s);
@@ -180,7 +192,7 @@ char	*print_number_u_helper(char *str_s)
 	return (str_s);
 }
 
-void	print_number_u(va_list argptr)
+void				print_number_u(va_list argptr)
 {
 	long long	b;
 	char		*str_s;
