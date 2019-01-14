@@ -134,7 +134,7 @@ char *                   prntnum_upper(long long num, char sign , int base);
 char *                    print_address_hex(void* p0,  int);
 
 char *                   myfloat(double fVal);
-char * convertdecimaltooctal(unsigned long long  decimalNumber);
+char * dcto(unsigned long long  decimalNumber);
 void byte_to_binary(int x);
 void prec_f(int sign, char *str);
 

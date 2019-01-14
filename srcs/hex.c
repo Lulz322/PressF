@@ -118,7 +118,7 @@ char	*print_address_hex(void *p0, int counter)
 	return (str);
 }
 
-char	*convertdecimaltooctal(unsigned	long long decimalnumber)
+char	*dcto(unsigned	long long decimalnumber)
 {
 	unsigned long long	octalnumber;
 	unsigned long long	i;

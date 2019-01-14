@@ -15,7 +15,7 @@
 char	*float_helper(char *str, double f, int value, int pos)
 {
 	char	*curr;
-	char 	len;
+	char	len;
 
 	len = pos - 1;
 	while (pos < (len + 7))

@@ -15,9 +15,9 @@ int main(void)
 
 	i = 0;
     while (i++ < 5) {
-	    fd = ft_printf("%10.4d", 42949696);
+	    fd = ft_printf("%#6o", 2500);
 	    ft_printf("\n");
-	    fd1 = printf("%10.4d", 42949696);
+	    fd1 = printf("%#6o", 2500);
 	    printf("\n");
 
 
