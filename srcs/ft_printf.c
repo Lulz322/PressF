@@ -6,13 +6,13 @@
 /*   By: iruban <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 12:48:50 by iruban            #+#    #+#             */
-/*   Updated: 2019/01/14 12:58:04 by iruban           ###   ########.fr       */
+/*   Updated: 2019/01/15 17:23:37 by iruban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	color_help(const char *format)
+void		color_help(const char *format)
 {
 	if (format[g_i + 1] == 'B' && format[g_i + 2] == 'L' &&
 	format[g_i + 3] == 'U' && format[g_i + 4] == '(')
@@ -25,7 +25,7 @@ void	color_help(const char *format)
 		ft_putstr(PF_CYAN);
 }
 
-void	color(const char *format)
+void		color(const char *format)
 {
 	if (format[g_i] == 'M' && format[g_i + 4] == '(')
 	{
@@ -52,7 +52,7 @@ void	color(const char *format)
 	}
 }
 
-char	hex_digit(int v)
+char		hex_digit(int v)
 {
 	if (v >= 0 && v < 10)
 		return ('0' + v);
@@ -60,23 +60,33 @@ char	hex_digit(int v)
 		return ('a' + v - 10);
 }
 
-double	check_f(void)
+long double	check_f(long double nbr)
 {
-	double	f;
-	int		n;
+	long double	f;
+	int			n;
 
-	n = 0;
-	f = 0.5;
-	if (g_cvars.prec >= 0)
+	if (g_cvars.prec > 0)
 	{
+		f = 0.5;
+		n = 0;
 		while (n++ < g_cvars.prec)
 			f /= 10;
-		return (f);
+		if (nbr > 0)
+			nbr += f;
+		else if (nbr < 0)
+			nbr -= f;
 	}
-	return (0.000005);
+	else
+	{
+		if (nbr < 0)
+			nbr -= 0.0000005;
+		else if (nbr > 0)
+			nbr += 0.0000005;
+	}
+	return (nbr);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list argptr;
 

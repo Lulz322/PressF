@@ -1,0 +1,3 @@
+/Users/iruban/Desktop/final/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/iruban/Desktop/final/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/iruban/Desktop/final/cmake-build-debug/CMakeFiles/printf_test.dir

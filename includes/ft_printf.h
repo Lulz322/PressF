@@ -99,11 +99,11 @@ char			*prntnum_lower(unsigned long long n, char s,
 				unsigned long long b);
 char			*prntnum_upper(unsigned long long num, char sign, int base);
 char			*print_address_hex(void *p0, int a);
-char			*myfloat(double fval);
+char			*myfloat(long double fval);
 char			*dcto(unsigned long long decimalnumber);
 void			byte_to_binary(int x);
-void			prec_f(int sign, char *str);
-double			check_f(void);
+char			*prec_f(char *str);
+long double		check_f(long double f);
 char			hex_digit(int v);
 char			*print_number_x_helper_two(char *str_s);
 char			*print_number_x_helper_three(char *str, unsigned long long s);

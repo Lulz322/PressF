@@ -70,7 +70,7 @@ char	*ft_itoa(long long nb)
 	i = len(n);
 	if (nb == 0)
 		str = ft_strdup("0");
-	else if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+	else if (!(str = (char*)malloc(sizeof(char) * (255 + 1))))
 		return (NULL);
 	str[i--] = '\0';
 	if (n == 0)

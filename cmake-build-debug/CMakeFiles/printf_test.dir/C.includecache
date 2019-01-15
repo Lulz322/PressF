@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/iruban/Desktop/final/includes/ft_printf.h
+../libft/includes/libft.h
+/Users/iruban/Desktop/final/libft/includes/libft.h
+stdarg.h
+-
+errno.h
+-
+stdio.h
+-
+stdlib.h
+-
+stdint.h
+-
+unistd.h
+-
+locale.h
+-
+inttypes.h
+-
+
+/Users/iruban/Desktop/final/libft/includes/libft.h
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+
+/Users/iruban/Desktop/final/qwe.c
+includes/ft_printf.h
+/Users/iruban/Desktop/final/includes/ft_printf.h
+signal.h
+-
+limits.h
+-
+signal.h
+-
+
