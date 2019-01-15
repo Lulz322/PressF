@@ -55,7 +55,7 @@ char	*prntnum_lower(unsigned long long num, char sign,
 	return (prntum_hepler(outbuf, sign, i));
 }
 
-char	*prntnum_upper(long long num, char sign, int base)
+char	*prntnum_upper(unsigned long long num, char sign, int base)
 {
 	int		i;
 	int		j;

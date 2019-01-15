@@ -97,7 +97,7 @@ void			print_percent(va_list argptr);
 */
 char			*prntnum_lower(unsigned long long n, char s,
 				unsigned long long b);
-char			*prntnum_upper(long long num, char sign, int base);
+char			*prntnum_upper(unsigned long long num, char sign, int base);
 char			*print_address_hex(void *p0, int a);
 char			*myfloat(double fval);
 char			*dcto(unsigned long long decimalnumber);
@@ -105,12 +105,13 @@ void			byte_to_binary(int x);
 void			prec_f(int sign, char *str);
 double			check_f(void);
 char			hex_digit(int v);
-char			*print_number_x_helper_two(char *str_s, uintmax_t sign);
-char			*print_number_x_helper_three(char *str_s, uintmax_t sign);
+char			*print_number_x_helper_two(char *str_s);
+char			*print_number_x_helper_three(char *str, unsigned long long s);
 char			*print_number_helper_three(char *str);
 char			*print_number_hepler_two(char *str);
 char			*print_number_helper_one(char *str, int i);
 int				check_bounus(const char *format);
+char			*print_x_j(char *str_s, unsigned long long sign);
 /*
 ** ---------------------- Strings & Chars Functions ----------------------------
 */
