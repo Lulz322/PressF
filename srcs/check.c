@@ -12,99 +12,25 @@
 
 #include "../includes/ft_printf.h"
 
-t_cvars		check_flags(const char *format, va_list argptr)
-{
-	while ((format[i] == ' ' || format[i] == '+' || format[i] == '-'
-				|| format[i] == '#' || format[i] == '0') && argptr)
-	{
-		if (format[i] == ' ')
-			g_cvars.flag[0] = ' ';
-		else if (format[i] == '+')
-			g_cvars.flag[1] = '+';
-		else if (format[i] == '0')
-			g_cvars.flag[2] = '0';
-		else if (format[i] == '-')
-			g_cvars.flag[3] = '-';
-		else if (format[i] == '#')
-			g_cvars.flag[4] = '#';
-		i++;
-	}
-	return (g_cvars);
-}
-
-void		check_width(const char *format, va_list argptr)
-{
-	char	str[255];
-	int		j;
-
-	*str = '\0';
-	j = 0;
-	while (format[i] >= '0' && format[i] <= '9' && argptr)
-		str[j++] = format[i++];
-	str[j] = '\0';
-	g_cvars.width = ft_atoi(str);
-}
-
-void		check_prec(const char *format, va_list argptr)
-{
-	char	str[13];
-	int		j;
-
-	str[0] = '\0';
-	j = 0;
-	while (format[i] >= '0' && format[i] <= '9' && argptr)
-		str[j++] = format[i++];
-	str[j] = '\0';
-	g_cvars.prec = ft_atoi(str);
-}
-
-int			check_bounus(const char *format)
-{
-	if (format[i] == 'L')
-	{
-		g_cvars.length = "L";
-		i++;
-		return (1);
-	}
-	else if (format[i] == 'j')
-	{
-		g_cvars.length = "j";
-		i++;
-		return (1);
-	}
-	else if (format[i] == 'z')
-	{
-		g_cvars.length = "z";
-		i++;
-		return (1);
-	}
-	else if (format[i] == 'l')
-	{
-		g_cvars.length = "l";
-		i++;
-	}
-	return (i);
-}
-
 int			check_length(const char *format)
 {
-	if (format[i] == 'h' && format[i + 1] == 'h')
+	if (format[g_i] == 'h' && format[g_i + 1] == 'h')
 	{
 		g_cvars.length = "hh";
-		i = i + 2;
+		g_i = g_i + 2;
 	}
-	else if (format[i] == 'l' && format[i + 1] == 'l')
+	else if (format[g_i] == 'l' && format[g_i + 1] == 'l')
 	{
 		g_cvars.length = "ll";
-		i = i + 2;
+		g_i = g_i + 2;
 	}
-	else if (format[i] == 'h')
+	else if (format[g_i] == 'h')
 	{
-		i++;
+		g_i++;
 		g_cvars.length = "h";
 	}
-	else if (format[i] == 'L' || format[i] == 'j'
-			|| format[i] == 'z' || format[i] == 'l')
+	else if (format[g_i] == 'L' || format[g_i] == 'j'
+			|| format[g_i] == 'z' || format[g_i] == 'l')
 		check_bounus(format);
 	else
 	{
@@ -120,25 +46,25 @@ void		until_symbol(const char *format)
 	int				j;
 
 	j = 0;
-	while (format[i])
+	while (format[g_i])
 	{
 		j = 0;
 		while (symbols[j])
 		{
-			if (format[i] == symbols[j])
+			if (format[g_i] == symbols[j])
 				return ;
 			else
 				j++;
 		}
-		i++;
+		g_i++;
 	}
 }
 
 int			behaivor(const char *format)
 {
-	if (format[i] == 'h')
+	if (format[g_i] == 'h')
 	{
-		i++;
+		g_i++;
 		return (0);
 	}
 	return (1);
@@ -146,17 +72,17 @@ int			behaivor(const char *format)
 
 void		check_cvars(const char *format, va_list argptr)
 {
-	if (format[i - 1] == '%' && ((format[i] == ' ' && format[i + 1] == '\0') ||
-	format[i] == '\0'))
+	if (format[g_i - 1] == '%' && ((format[g_i] == ' ' &&
+	format[g_i + 1] == '\0') || format[g_i] == '\0'))
 	{
-		++i;
+		++g_i;
 		return ;
 	}
 	check_flags(format, argptr);
 	check_width(format, argptr);
-	if (format[i] == '.')
+	if (format[g_i] == '.')
 	{
-		while (format[++i] == '.')
+		while (format[++g_i] == '.')
 			;
 		g_cvars.dot = '.';
 	}
@@ -164,12 +90,12 @@ void		check_cvars(const char *format, va_list argptr)
 		check_prec(format, argptr);
 	check_length(format);
 	until_symbol(format);
-	if (format[i] == '\0')
-		while (format[--i] == ' ')
+	if (format[g_i] == '\0')
+		while (format[--g_i] == ' ')
 			;
 	if (behaivor(format) == 0)
 		return ;
-	check_symbol(format[i]);
+	check_symbol(format[g_i]);
 }
 
 int			check_symbol(char format)

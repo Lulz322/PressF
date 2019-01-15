@@ -23,7 +23,6 @@ char	*ft_strnew(size_t size)
 	return (tmp);
 }
 
-
 char	*ft_strdup(const char *src)
 {
 	int		i;

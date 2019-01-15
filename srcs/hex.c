@@ -81,14 +81,6 @@ char	*prntnum_upper(long long num, char sign, int base)
 	return (prntum_hepler(outbuf, sign, i));
 }
 
-char	hex_digit(int v)
-{
-	if (v >= 0 && v < 10)
-		return ('0' + v);
-	else
-		return ('a' + v - 10);
-}
-
 char	*print_address_hex(void *p0, int counter)
 {
 	int			i;

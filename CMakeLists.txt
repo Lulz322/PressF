@@ -35,6 +35,9 @@ add_executable(printf_test
         srcs/print_o.c
         srcs/print_x.c
         srcs/string.c
+        srcs/print_number_two.c
+        srcs/print_number_o_two.c
+        srcs/print_number_x_two.c
         author
         Makefile
-        qwe.c)
+        qwe.c srcs/check_two.c)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsouchet <bsouchet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iruban <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/03 22:30:46 by bsouchet          #+#    #+#             */
-/*   Updated: 2018/11/28 11:23:37 by iruban           ###   ########.fr       */
+/*   Created: 2019/01/15 12:53:18 by iruban            #+#    #+#             */
+/*   Updated: 2019/01/15 12:53:19 by iruban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,64 +16,37 @@
 /*
 ** -------------------------- External Headers ---------------------------------
 */
-
 # include "../libft/includes/libft.h"
 # include <stdarg.h>
 # include <errno.h>
 # include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <unistd.h>
-#include <locale.h>
-#include <inttypes.h>
+# include <stdlib.h>
+# include <stdint.h>
+# include <unistd.h>
+# include <locale.h>
+# include <inttypes.h>
 
-unsigned int symbols;
-int i;
+unsigned int	g_symbols;
+int				g_i;
 
-typedef struct s_cvars{
-	char dot;
-	char flag[5]; // 0 | ' '     1 | +    2 | 0     3 | -  4| #
-	char symbol;
-	int width;
-	char *length;
-	int prec;
-	int color;
-} t_cvars;
-
-
-t_cvars g_cvars;
-
-enum	e_bool
+typedef struct	s_cvars
 {
-	false = 0,
-	true
-};
-
-# define _BOOL	typedef enum e_bool	bool
-
-
-# define _ERR_MSG(msg) ft_putendl(msg)
-# define _ERR_NOTIS(ex) if (!(ex)) return ;
-# define _ERR_NOTIS_MSG(ex) if (!(ex)) { _ERR_MSG("error"); return (false); }
-# define _ERR_NOTIS_O(ex, out) if (!(ex)) return (out)
-
-_BOOL;
-
+	char		dot;
+	char		flag[5];
+	char		symbol;
+	int			width;
+	char		*length;
+	int			prec;
+	int			color;
+}				t_cvars;
 
 /*
-** -------------------------- Macros Definition --------------------------------
+**  0 | ' '     1 | +    2 | 0     3 | -  4| #
 */
-
-# define MAX(a, b)		b & ((a - b) >> 31) | a & (~(a - b) >> 31)
-# define MIN(a, b)		a & ((a - b) >> 31) | b & (~(a - b) >> 31)
-# define ABS(a)			(a < 0) ? -a : a
-# define DABS(a)		(a < 0.0f) ? -a : a
-# define STRERR			strerror
-
+t_cvars g_cvars;
 /*
 ** -------------------------- Colors Definition --------------------------------
 */
-
 # define PF_RED	        "\033[31m"
 # define PF_GREEN		"\033[32m"
 # define PF_YELLOW		"\033[33m"
@@ -82,89 +55,71 @@ _BOOL;
 # define PF_CYAN		"\033[36m"
 # define PF_EOC			"\033[0m"
 
-
 /*
 ** -----------------------------------------------------------------------------
 ** -------------------------------- Sources ------------------------------------
 ** -----------------------------------------------------------------------------
 */
-
-int						ft_printf(const char *format, ...);
-
+int				ft_printf(const char *format, ...);
 /*
 ** -------------------------- Parsing Functions --------------------------------
 */
+int				check_symbol(char format);
+void			parsing(const char *format, va_list argptr);
+t_cvars			check_flags(const char *format, va_list argptr);
+void			check_cvars(const char *format, va_list argptr);
+void			check_width(const char *format, va_list argptr);
+void			check_prec(const char *format, va_list argptr);
+int				check_length(const char *format);
+char			*width_helper(char *str);
+char			*prec_helper(char *str_s);
+void			clean();
+char			*print_number_part_two_d(long long int b, char **a);
+char			*print_number_part_one_d(long long int b, char **a);
+char			*print_number_part_two_o(va_list argptr);
+char			*print_number_part_one_o(va_list argptr);
+char			*print_number_part_two_x(unsigned long long b, char *a);
+char			*print_number_part_one_x(unsigned long long b, char *a);
+void			print_number(va_list argptr);
+void			print_number_h(char *str);
+void			print_number_h_o(char *str);
+void			print_number_h_s(char *str);
+void			print_x_h(char *str);
+void			print_number_o(va_list argptr);
+void			print_number_x(va_list argptr);
+void			print_number_u(va_list argptr);
+void			print_number_f(va_list argptr);
+void			print_number_p(va_list argptr);
+void			print_percent(va_list argptr);
 
-int check_symbol(char format);
-void parsing(const char *format, va_list argptr);
-t_cvars check_flags(const char *format, va_list argptr);
-void check_cvars(const char *format, va_list argptr);
-void check_width(const char *format, va_list argptr);
-void check_prec(const char *format, va_list argptr);
-int check_length(const char *format);
-char *width_helper(char *str);
-char *prec_helper(char *str_s);
-void clean();
-
-char *print_number_part_two_d(long long int b, char **);
-char *print_number_part_one_d(long long int b, char **);
-char *print_number_part_two_o(va_list);
-char *print_number_part_one_o(va_list);
-char *print_number_part_two_x(unsigned long long, char *);
-char *print_number_part_one_x(unsigned long long, char *);
-void print_number(va_list argptr);
-void print_number_h(char *str);
-void print_number_h_o(char *str);
-void print_number_h_s(char *str);
-void print_x_h(char *str);
-void print_string(va_list argptr);
-void print_char(va_list argptr);
-void print_number_o(va_list argptr);
-void print_number_x(va_list argptr);
-void print_number_u(va_list argptr);
-void print_number_f(va_list argptr);
-void print_number_p(va_list argptr);
-void print_percent(va_list argptr);
 /*
 ** -------------------------- Numbers Functions --------------------------------
 */
-
-char *                 prntnum_lower(unsigned long long num, char sign , unsigned long long base);
-char *                   prntnum_upper(long long num, char sign , int base);
-char *                    print_address_hex(void* p0,  int);
-
-char *                   myfloat(double fVal);
-char * dcto(unsigned long long  decimalNumber);
-void byte_to_binary(int x);
-void prec_f(int sign, char *str);
-
-//void					itoa_printf(intmax_t d, t_printf *p, int len);
-//void					itoa_base_printf(uintmax_t d, int b, t_printf *p);
-//void					itoa_base_fill(uintmax_t tmp, int base, char *str,
-//						t_printf *p);
-
+char			*prntnum_lower(unsigned long long n, char s,
+				unsigned long long b);
+char			*prntnum_upper(long long num, char sign, int base);
+char			*print_address_hex(void *p0, int a);
+char			*myfloat(double fval);
+char			*dcto(unsigned long long decimalnumber);
+void			byte_to_binary(int x);
+void			prec_f(int sign, char *str);
+double			check_f(void);
+char			hex_digit(int v);
+char			*print_number_x_helper_two(char *str_s, uintmax_t sign);
+char			*print_number_x_helper_three(char *str_s, uintmax_t sign);
+char			*print_number_helper_three(char *str);
+char			*print_number_hepler_two(char *str);
+char			*print_number_helper_one(char *str, int i);
+int				check_bounus(const char *format);
 /*
 ** ---------------------- Strings & Chars Functions ----------------------------
 */
-
-//void					pf_putstr(t_printf *p);
-//void					pf_putwstr(t_printf *p);
-//void					pf_character(t_printf *p, unsigned c);
-//void					ft_printf_putstr(char *s, t_printf *p);
-//void					pf_putwchar(t_printf *p, unsigned int w, int wl, int n);
-
+void			print_string(va_list argptr);
+void			print_char(va_list argptr);
 /*
 ** --------------------------- Bonus Functions ---------------------------------
 */
-
-//void					print_pointer_address(t_printf *p);
-//void					color(t_printf *p);
-
-
-/*
-** --------------------------- Buffer Functions --------------------------------
-*/
-
-
+void			color(const char *format);
+void			color_help(const char *format);
 
 #endif

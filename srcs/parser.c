@@ -55,12 +55,12 @@ void	parsing_part_two(va_list argptr)
 
 void	parsing(const char *format, va_list argptr)
 {
-	++i;
+	++g_i;
 	check_cvars(format, argptr);
 	if (g_cvars.symbol == 0)
 	{
-		if (format[i] != '\0')
-			--i;
+		if (format[g_i] != '\0')
+			--g_i;
 		return ;
 	}
 	if (parser_help() == 0)

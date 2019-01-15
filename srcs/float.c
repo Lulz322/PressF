@@ -31,22 +31,6 @@ char	*float_helper(char *str, double f, int value, int pos)
 	return (str);
 }
 
-double	check_f(void)
-{
-	double	f;
-	int		n;
-
-	n = 0;
-	f = 0.5;
-	if (g_cvars.prec >= 0)
-	{
-		while (n++ < g_cvars.prec)
-			f /= 10;
-		return (f);
-	}
-	return (0.000005);
-}
-
 char	*myfloat(double f)
 {
 	char			*str;
@@ -54,7 +38,10 @@ char	*myfloat(double f)
 	char			len;
 	int				value;
 
-	f += check_f();
+	if (f >= 0)
+		f += check_f();
+	else
+		f -= check_f();
 	pos = 0;
 	value = (int)f;
 	str = ft_itoa(value);

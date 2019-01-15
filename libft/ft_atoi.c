@@ -35,9 +35,9 @@ static		void	check_sign(const char *str, int *i, int *sign)
 
 long long			ft_atoi(const char *str)
 {
-	int		i;
-	long long 		answer;
-	int		sign;
+	int			i;
+	long long	answer;
+	int			sign;
 
 	sign = 0;
 	i = skip_whitespaces(str);
