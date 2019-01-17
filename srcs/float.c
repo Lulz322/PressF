@@ -27,7 +27,7 @@ char	*float_helper(char *str, long double f, long long value, int pos)
 		str[pos++] = *curr;
 		free(curr);
 	}
-	str[len + 7] = '\0';
+	str[len + g_cvars.prec + 7] = '\0';
 	return (str);
 }
 
